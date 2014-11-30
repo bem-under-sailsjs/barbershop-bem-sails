@@ -20,7 +20,7 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  // connection: 'localDiskDb',
+  connection: 'devMongodbServer',
 
   /***************************************************************************
   *                                                                          *
@@ -34,7 +34,7 @@ module.exports.models = {
 
 
   // A flag to toggle the automatic definition of a primary key in your model.
-  autoPK: true,
+  // autoPK: false,
 
   autoUpdatedAt: true
 
