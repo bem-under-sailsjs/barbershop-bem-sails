@@ -31,8 +31,8 @@ var AuthController = {
      * @param {Object} res
      */
     login: function(req, res) {
-        var strategies = sails.config.passport
-            , providers = {};
+        var strategies = sails.config.passport,
+            providers = {};
 
         // Get a list of available providers for use in your templates.
         Object.keys(strategies).forEach(function(key) {
@@ -41,15 +41,17 @@ var AuthController = {
             }
 
             providers[key] = {
-                name: strategies[key].name
-                , slug: key
+                name: strategies[key].name,
+                slug: key
             };
         });
 
+        passport.retpath = req.query.retpath;
+
         // Render the `auth/login.ext` view
         res.view({
-            providers: providers
-            , errors: req.flash('error')
+            providers: providers,
+            errors: req.flash('error')
         });
     },
 
@@ -69,6 +71,9 @@ var AuthController = {
      */
     logout: function(req, res) {
         req.logout();
+        // TODO: Maybe it's not necessary
+        req.session.User = res.locals.currentUser = null;
+        req.session.auth = false;
         res.redirect('/');
     },
 
@@ -161,9 +166,8 @@ var AuthController = {
                     return tryAgain();
                 }
 
-                // Upon successful login, send the user to the homepage were req.user
-                // will available.
-                res.redirect('/');
+                // Upon successful login, send the user to the retpath.
+                res.redirect(passport.retpath ? encodeURI(passport.retpath) : '/');
             });
         });
     },

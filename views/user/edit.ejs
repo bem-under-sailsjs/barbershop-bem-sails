@@ -1,0 +1,23 @@
+User#edit
+
+<form action="/user/update/" method="post">
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+    <input type="hidden" name="id" value="<%= user.id %>"/>
+
+    <div>email: <input type="text" name="email" value="<%= user.email %>"/></div>
+    <div>username: <input type="text" name="username" value="<%= user.username %>"/></div>
+    <div>displayName: <input type="text" name="displayName" value="<%= user.displayName %>"/></div>
+    <% if (res.locals.currentUser.isAdmin) { %>
+    <div>
+        isAdmin: <br/>
+        yes <input type="radio" name="isAdmin" value="yes" <% if (user.isAdmin) { %>checked="checked" <% } %> /> |
+        no <input type="radio" name="isAdmin" value="no"  <% if (!user.isAdmin) { %>checked="checked" <% } %> />
+    </div>
+    <% } %>
+
+    <br/>
+
+    <button class="button button_type_buy button__control i-bem"
+            data-bem="{&quot;button&quot;:{}}" role="button">Сохранить
+    </button>
+</form>

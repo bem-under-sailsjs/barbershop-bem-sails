@@ -39,6 +39,16 @@ module.exports.passport = {
      }
      },*/
 
+    vkontakte: {
+        name: 'Вконтакте',
+        protocol: 'oauth2',
+        strategy: require('passport-vkontakte').Strategy,
+        options: {
+            clientID: 'in-dev-use-local.js',
+            clientSecret: 'in-dev-use-local.js'
+        }
+    },
+
     facebook: {
         name: 'Facebook',
         protocol: 'oauth2',
