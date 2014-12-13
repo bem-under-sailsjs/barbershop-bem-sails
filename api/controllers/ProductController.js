@@ -7,87 +7,112 @@
 
 module.exports = {
 
+    /**
+     * `ProductController.index()`
+     */
+    index: function(req, res) {
+        Product.find(function(err, products) {
+            res.view('product/index', {products: products});
+        });
+    },
 
+    /**
+     * `ProductController.show()`
+     */
+    show: function(req, res) {
+        Product.findOne({id: req.param('id')}, function(err, product) {
+            res.view('product/show', {product: product});
+        });
 
-  /**
-   * `ProductController.index()`
-   */
-  index: function (req, res) {
-    Product.find(function(err, products) {
-      res.view('product/index', {products: products});
-    });
-  },
+    },
 
-  /**
-   * `ProductController.show()`
-   */
-  show: function(req, res) {
-    Product.findOne({id: req.param('id')}, function(err, product) {
-      res.view('product/show', {product: product});
-    });
+    /**
+     * `ProductController.create()`
+     */
+    create: function(req, res) {
 
-  },
+        req.file('image')
+            .upload({
+                dirname: sails.config.fileUpload.uploadDir
+            }, function(err, file) {
+                if (err) return next(err);
 
-  /**
-   * `ProductController.create()`
-   */
-  create: function (req, res) {
+                var productData = req.params.all();
 
-    Product.create(req.params.all(), function(err, product) {
-      if (err) return next(err);
+                if (file && file[0] && file[0].fd) {
+                    productData.image = file[0].fd.split('/').pop();
+                }
 
-      res.status(201);
-      res.redirect('/product/' + product.id);
-    });
+                // TODO: rewrite
+                Product.create(productData, function(err, product) {
+                    if (err) return next(err);
 
-  },
+                    res.status(201);
+                    res.redirect('/product/' + product.id);
+                });
 
+            });
 
-  /**
-   * `ProductController.edit()`
-   */
-  edit: function (req, res) {
-    Product.findOne({id: req.param('id')}, function(err, product) {
-      res.view('product/edit', {product: product});
-    });
-  },
+    },
 
+    /**
+     * `ProductController.edit()`
+     */
+    edit: function(req, res) {
+        Product.findOne({id: req.param('id')}, function(err, product) {
+            res.view('product/edit', {product: product});
+        });
+    },
 
-  /**
-   * `ProductController.new()`
-   */
-  'new': function (req, res) {
-    res.view('product/new');
-  },
+    /**
+     * `ProductController.new()`
+     */
+    'new': function(req, res) {
 
+        // TODO: make one view with edit
+        res.view('product/new');
+    },
 
-  /**
-   * `ProductController.update()`
-   */
-  update: function (req, res) {
+    /**
+     * `ProductController.update()`
+     */
+    update: function(req, res) {
 
-    Product.update(req.param('id'), req.params.all(), function(err, product) {
-      if (err) res.redirect('/product/' + req.param('id') + '/edit');
+        req.file('image')
+            .upload({
+                dirname: sails.config.fileUpload.uploadDir
+            }, function(err, file) {
+                if (err) return next(err);
 
-      res.status(201);
-      res.redirect('/product/' + req.param('id'));
-    });
-  },
+                var productData = req.params.all();
 
+                if (file && file[0] && file[0].fd) {
+                    productData.image = file[0].fd.split('/').pop();
+                }
 
-  /**
-   * `ProductController.delete()`
-   */
-  'delete': function (req, res) {
-    var productId = req.param('id');
+                Product.update(req.param('id'), productData, function(err, product) {
+                    if (err) res.redirect('/product/' + req.param('id') + '/edit');
 
-    Product.findOne({id: productId}, function(err, product) {
+                    res.status(201);
+                    res.redirect('/product/' + req.param('id'));
+                });
 
-      Product.delete({id: productId}, function(err) {
-        next();
-      });
+            });
+    },
 
-    });
-  }
+    /**
+     * `ProductController.delete()`
+     */
+    'delete': function(req, res) {
+        var productId = req.param('id');
+
+        Product.findOne({id: productId}, function(err, product) {
+
+            Product.delete({id: productId}, function(err) {
+                next();
+            });
+
+        });
+    }
 };
 

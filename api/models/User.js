@@ -1,18 +1,18 @@
 var User = {
-  // Enforce model schema in the case of schemaless databases
-  schema: true,
+    // Enforce model schema in the case of schemaless databases
+    schema: true,
 
-  attributes: {
-    username     : { type: 'string', unique: true },
-    displayName  : { type: 'string' },
-    profileUrl   : { type: 'string' },
-    gender       : { type: 'string' },
-    isOnline     : { type: 'boolean' },
-    isAdmin      : { type: 'boolean' },
-    emails       : { type: 'array' },
-    email        : { type: 'email',  unique: true },
-    passports    : { collection: 'Passport', via: 'user' }
-  }
+    attributes: {
+        username: {type: 'string', unique: true},
+        displayName: {type: 'string'},
+        profileUrl: {type: 'string'},
+        gender: {type: 'string'},
+        isOnline: {type: 'boolean'},
+        isAdmin: {type: 'boolean'},
+        emails: {type: 'array'},
+        email: {type: 'email', unique: true},
+        passports: {collection: 'Passport', via: 'user'}
+    }
 
 };
 

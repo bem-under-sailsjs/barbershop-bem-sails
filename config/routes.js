@@ -22,48 +22,51 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-   *                                                                          *
-   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-   * etc. depending on your default view engine) your home page.              *
-   *                                                                          *
-   * (Alternatively, remove this and add an `index.html` file in your         *
-   * `assets` directory)                                                      *
-   *                                                                          *
-   ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+     * etc. depending on your default view engine) your home page.              *
+     *                                                                          *
+     * (Alternatively, remove this and add an `index.html` file in your         *
+     * `assets` directory)                                                      *
+     *                                                                          *
+     ***************************************************************************/
 
-  '/': 'IndexPageController.index',
+    '/': 'IndexPageController.index',
 
-  /***************************************************************************
-   *                                                                          *
-   * Custom routes here...                                                    *
-   *                                                                          *
-   *  If a request to a URL doesn't match any of the custom routes above, it  *
-   * is matched against Sails route blueprints. See `config/blueprints.js`    *
-   * for configuration options and examples.                                  *
-   *                                                                          *
-   ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Custom routes here...                                                    *
+     *                                                                          *
+     *  If a request to a URL doesn't match any of the custom routes above, it  *
+     * is matched against Sails route blueprints. See `config/blueprints.js`    *
+     * for configuration options and examples.                                  *
+     *                                                                          *
+     ***************************************************************************/
 
-  'get /login': 'AuthController.login',
-  'get /logout': 'AuthController.logout',
-  'get /register': 'AuthController.register',
+    'get /login': 'AuthController.login',
+    'get /logout': 'AuthController.logout',
+    'get /register': 'AuthController.register',
 
-  'post /auth/local': 'AuthController.callback',
-  'post /auth/local/:action': 'AuthController.callback',
+    'post /auth/local': 'AuthController.callback',
+    'post /auth/local/:action': 'AuthController.callback',
 
-  'get /auth/:provider': 'AuthController.provider',
-  'get /auth/:provider/callback': 'AuthController.callback',
-  'get /auth/:provider/:action': 'AuthController.callback',
+    'get /auth/:provider': 'AuthController.provider',
+    'get /auth/:provider/callback': 'AuthController.callback',
+    'get /auth/:provider/:action': 'AuthController.callback',
 
-  // Product
-  'get /products/': 'ProductController.index',
-  'get /product/:id': 'ProductController.show',
-  'get /product/new': 'ProductController.new',
-  'get /product/:id/edit': 'ProductController.edit',
-  'post /product/create': 'ProductController.create',
-  'post /product/:id/update': 'ProductController.update',
-  'post /product/:id/delete': 'ProductController.delete',
+    // Product
+    'get /products/': 'ProductController.index',
+    'get /product/new': 'ProductController.new',
+    'post /product/create': 'ProductController.create',
+    'get /product/:id': 'ProductController.show',
+    'get /product/:id/edit': 'ProductController.edit',
+    'post /product/:id/update': 'ProductController.update',
+    'post /product/:id/delete': 'ProductController.delete',
 
-  // Users
-  'get /user/:email': 'UserController.show'
+    // Users
+    'get /user/:email': 'UserController.show',
+
+    // Files
+    'get /uploads/:id': 'FileController.download'
 };
