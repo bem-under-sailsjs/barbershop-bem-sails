@@ -9,10 +9,29 @@ module.exports = {
 
   attributes: {
     image: 'string',
-    title: 'string',
-    head: 'string',
+    header: 'string',
+    theme: 'string',
+    annotation: 'string',
+    content: 'string',
+    isbn: 'string',
+    balance: 'string',
     text: 'string',
     price: 'integer'
+  },
+
+
+  toJSON: function() {
+    var obj = this.toObject();
+    delete obj._csrf;
+
+    return obj;
+  },
+
+  /**
+   * Create stub to product
+   */
+  'new': function() {
+
   }
 };
 

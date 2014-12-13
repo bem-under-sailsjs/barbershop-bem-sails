@@ -10,7 +10,13 @@ Product#edit
     <div class="product-card__columns">
 
       <div class="product-card__column product-card__column_position_left">
-        Обложка: <input type="file" name="image"/>
+        Обложка:
+        <% if (product.image) { %>
+         <img class="image" src="<%= '/uploads/' + product.image + '?w=170' %>" alt="<%= product.header %>"/>
+          <input type="file" name="image" value="<%= product.image %>"/>
+        <% } else { %>
+          <input type="file" name="image" value="<%= product.image %>"/>
+        <% } %>
       </div>
 
       <div class="product-card__column product-card__column_position_center">
@@ -30,7 +36,7 @@ Product#edit
         <div class="product-card__content">
           <span class="product-card__property-header">Содержание: </span>
             <span class="product-card__property-content">
-              <input type="text" name="content" value="<%= product.content %>"/>
+              <textarea type="text" name="content" style="height: 100px;" value="<%= product.content %>"></textarea>
             </span>
         </div>
 

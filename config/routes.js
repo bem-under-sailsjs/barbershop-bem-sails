@@ -57,13 +57,16 @@ module.exports.routes = {
 
   // Product
   'get /products/': 'ProductController.index',
-  'get /product/:id': 'ProductController.show',
   'get /product/new': 'ProductController.new',
-  'get /product/:id/edit': 'ProductController.edit',
   'post /product/create': 'ProductController.create',
+  'get /product/:id': 'ProductController.show',
+  'get /product/:id/edit': 'ProductController.edit',
   'post /product/:id/update': 'ProductController.update',
   'post /product/:id/delete': 'ProductController.delete',
 
   // Users
-  'get /user/:email': 'UserController.show'
+  'get /user/:email': 'UserController.show',
+
+  // Files
+  'get /uploads/:id': 'FileController.download'
 };

@@ -5,7 +5,7 @@ Product#show
   <div class="product-card__columns">
 
     <div class="product-card__column product-card__column_position_left">
-      Обложка: <%= product.image %>
+      Обложка: <img class="image product-card__image" src="<%= '/uploads/' + product.image + '?w=370' %>" alt="<%= product.header %>"/>
     </div>
 
     <div class="product-card__column product-card__column_position_center">
