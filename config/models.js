@@ -11,31 +11,30 @@
 
 module.exports.models = {
 
-  // Will use Mongo
-  schema: false,
+    // Will use Mongo
+    schema: false,
 
-  /***************************************************************************
-  *                                                                          *
-  * Your app's default connection. i.e. the name of one of your app's        *
-  * connections (see `config/connections.js`)                                *
-  *                                                                          *
-  ***************************************************************************/
-  connection: 'devMongodbServer',
+    /***************************************************************************
+     *                                                                          *
+     * Your app's default connection. i.e. the name of one of your app's        *
+     * connections (see `config/connections.js`)                                *
+     *                                                                          *
+     ***************************************************************************/
+    connection: 'devMongodbServer',
 
-  /***************************************************************************
-  *                                                                          *
-  * How and whether Sails will attempt to automatically rebuild the          *
-  * tables/collections/etc. in your schema.                                  *
-  *                                                                          *
-  * See http://sailsjs.org/#/documentation/concepts/ORM/model-settings.html  *
-  *                                                                          *
-  ***************************************************************************/
-  migrate: 'alter',
+    /***************************************************************************
+     *                                                                          *
+     * How and whether Sails will attempt to automatically rebuild the          *
+     * tables/collections/etc. in your schema.                                  *
+     *                                                                          *
+     * See http://sailsjs.org/#/documentation/concepts/ORM/model-settings.html  *
+     *                                                                          *
+     ***************************************************************************/
+    migrate: 'alter',
 
+    // A flag to toggle the automatic definition of a primary key in your model.
+    // autoPK: false,
 
-  // A flag to toggle the automatic definition of a primary key in your model.
-  // autoPK: false,
-
-  autoUpdatedAt: true
+    autoUpdatedAt: true
 
 };

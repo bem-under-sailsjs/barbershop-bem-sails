@@ -44,7 +44,7 @@ module.exports = {
             gm(filePath)
                 .resize(width, height)
                 .write(filePathWithSize, function(err) {
-                    if(err) next(err);
+                    if (err) next(err);
                     var readStream = fs.createReadStream(filePathWithSize);
                     readStream.pipe(res);
                 });

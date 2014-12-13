@@ -7,11 +7,11 @@
 
 module.exports = {
 
-  /**
-   * `IndexPageController.index()`
-   */
-  index: function (req, res) {
-    res.view('index');
-  }
+    /**
+     * `IndexPageController.index()`
+     */
+    index: function(req, res) {
+        res.view('index');
+    }
 };
 

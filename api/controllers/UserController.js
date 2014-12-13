@@ -7,11 +7,11 @@
 
 module.exports = {
 
-  show: function(req, res) {
+    show: function(req, res) {
 
-    User.findOneByEmail(req.param('email'), function(err, user) {
-      res.view('user/show', {user: user});
-    });
-  }
+        User.findOneByEmail(req.param('email'), function(err, user) {
+            res.view('user/show', {user: user});
+        });
+    }
 };
 
