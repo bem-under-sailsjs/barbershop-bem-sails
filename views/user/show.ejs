@@ -8,10 +8,11 @@ User#show
     <li>profileUrl: <%= user.profileUrl %></li>
     <li>gender: <%= user.gender %></li>
     <li>isOnline: <%= user.isOnline %></li>
-    <li>isAdmin: <%= user.isAdmin %></li>
-    <li>passports: <%= user.passports %></li>
+    <li>Вы <% if (!user.isAdmin) { %>не<% } %> администратор</li>
     <li>createdAt: <%= user.createdAt %></li>
     <li>updatedAt: <%= user.updatedAt %></li>
 </ul>
 
+<a href="/user/<%= user.id %>/edit">Редактировать</a>
+<br/>
 <a href="/logout/">Выйти</a>

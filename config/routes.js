@@ -44,6 +44,7 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
+    // AuthController
     'get /login': 'AuthController.login',
     'get /logout': 'AuthController.logout',
     'get /register': 'AuthController.register',
@@ -65,7 +66,9 @@ module.exports.routes = {
     'post /product/:id/delete': 'ProductController.delete',
 
     // Users
-    'get /user/:email': 'UserController.show',
+    'get /user/:id': 'UserController.show',
+    'get /user/:id/edit': 'UserController.edit',
+    'post /user/:id/update': 'UserController.update',
 
     // Files
     'get /uploads/:id': 'FileController.download'

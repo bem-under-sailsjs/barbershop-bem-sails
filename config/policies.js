@@ -26,7 +26,20 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
 
-    '*': ['passport']
+    '*': ['passport'],
+
+    ProductController: {
+        '*': ['passport', 'isAdmin'],
+        show: 'passport',
+        index: 'passport'
+    },
+
+    UserController: {
+        '*': ['passport', 'isAdmin'],
+        'show': ['passport', 'isOwner'],
+        'edit': ['passport', 'isOwner'],
+        'update': ['passport', 'isOwner']
+    }
 
     /***************************************************************************
      *                                                                          *

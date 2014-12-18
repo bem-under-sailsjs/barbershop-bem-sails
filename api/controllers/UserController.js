@@ -7,10 +7,38 @@
 
 module.exports = {
 
-    show: function(req, res) {
+    show: function(req, res, next) {
 
-        User.findOneByEmail(req.param('email'), function(err, user) {
-            res.view('user/show', {user: user});
+        User.findOne(req.param('id'), function(err, user) {
+            if (err) next(err);
+
+            if (!user) {
+                res.notFound()
+            } else {
+                res.view('user/show', {user: user});
+            }
+        });
+    },
+
+    edit: function(req, res, next) {
+        User.findOne(req.param('id'), function(err, user) {
+            if (err) next(err);
+
+            res.view('user/edit', {user: user});
+        });
+    },
+
+    update: function(req, res, next) {
+
+        var data = req.params.all();
+
+        // TODO: refactor
+        data.isAdmin = (req.session.User.isAdmin) && (data.isAdmin === 'yes');
+
+        User.update(req.param('id'), data, function(err, user) {
+            if (err) next(err);
+
+            res.redirect('/user/' + data.id);
         });
     }
 };
