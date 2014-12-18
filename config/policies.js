@@ -36,9 +36,9 @@ module.exports.policies = {
 
     UserController: {
         '*': ['passport', 'isAdmin'],
-        'show': ['passport', 'isOwner'],
-        'edit': ['passport', 'isOwner'],
-        'update': ['passport', 'isOwner']
+        'show': ['passport', 'isAdminOrOwner'],
+        'edit': ['passport', 'isAdminOrOwner'],
+        'update': ['passport', 'isAdminOrOwner']
     }
 
     /***************************************************************************
