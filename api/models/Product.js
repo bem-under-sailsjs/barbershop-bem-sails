@@ -8,15 +8,20 @@
 module.exports = {
 
     attributes: {
-        image: 'string',
-        header: 'string',
-        theme: 'string',
-        annotation: 'string',
-        content: 'string',
-        isbn: 'string',
-        balance: 'string',
-        text: 'string',
-        price: 'integer'
+        publisher: 'string', // Наименование журнала (издания)
+        publishing_year: '', // Год издания
+        number: 'number', // номер
+        subject: 'string', // Тематика
+        theme: 'string', // Тема
+        annotation: 'string',  // Аннотация
+        content: 'string', // Содержание
+        isbn: 'string', // ISBN
+        price: 'integer', // Цена
+        tags: 'array', // Тэги
+        image: 'string', // Обложка
+        header: 'string', // заголовок
+        balance: 'string', // Баланс
+        text: 'string'  //
     },
 
     toJSON: function() {
