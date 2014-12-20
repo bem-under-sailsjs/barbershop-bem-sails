@@ -69,8 +69,25 @@ module.exports = {
      */
     'new': function(req, res) {
 
+        var productStub = {
+            publisher: 'string', // Наименование журнала (издания)
+            publishing_year: 'number', // Год издания
+            number: 'number', // номер
+            subject: 'string', // Тематика
+            theme: 'string', // Тема
+            annotation: 'string',  // Аннотация
+            content: 'string', // Содержание
+            isbn: 'string', // ISBN
+            price: 'integer', // Цена
+            tags: 'array', // Тэги
+            image: 'string', // Обложка
+            header: 'string', // заголовок
+            balance: 'string', // Баланс
+            text: 'string'  //
+        };
+
         // TODO: make one view with edit
-        res.view('product/new');
+        res.view('product/new', { product: productStub });
     },
 
     /**
