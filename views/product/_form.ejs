@@ -1,0 +1,161 @@
+Product#_form_partial
+
+<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+<div class="product-card">
+
+    <div class="product-card__header">
+        Заголовок: <input type="text"
+                          class="form-control"
+                          name="header"
+                          value="<%= product.header %>"/>
+    </div>
+
+    <div class="product-card__columns">
+
+        <div class="product-card__column product-card__column_position_left">
+            Обложка:
+            <br/>
+            <% if (product.image) { %>
+            <img class="image"
+                 src="<%= '/uploads/' + product.image + '?w=170' %>"
+                 alt="<%= product.header %>"/>
+
+            <span style="margin: 15px 0 0 0; display: inline-block;">
+            Поменять изображение:
+            <input
+                style="margin: 10px 0 0 0;"
+                type="file"
+                name="image"
+                value="<%= product.image %>"/>
+            </span>
+
+            <% } else { %>
+
+            <span style="margin: 15px 0 0 0; display: inline-block;">
+            Поменять изображение:
+            <input
+                style="margin: 10px 0 0 0;"
+                type="file"
+                name="image"
+                value="<%= product.image %>"/>
+            <% } %>
+            </span>
+
+        </div>
+
+        <div class="product-card__column product-card__column_position_center">
+
+            <div class="product-card__theme">
+                <span class="product-card__property-header">Издание: </span>
+                <span class="product-card__property-content">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="publisher"
+                        value="<%= product.publisher %>"/>
+                </span>
+            </div>
+
+            <div class="product-card__theme">
+                <span class="product-card__property-header">Год издания: </span>
+                <span class="product-card__property-content">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="publishing_year"
+                        value="<%= product.publishing_year %>"/>
+                </span>
+            </div>
+
+
+            <div class="product-card__theme">
+                <span class="product-card__property-header">Номер: </span>
+                <span class="product-card__property-content">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="number"
+                        value="<%= product.number %>"/>
+                </span>
+            </div>
+
+            <div class="product-card__theme">
+                <span class="product-card__property-header">Тематика: </span>
+                <span class="product-card__property-content">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="subject"
+                        value="<%= product.subject %>"/>
+                </span>
+            </div>
+
+            <div class="product-card__theme">
+                <span class="product-card__property-header">Тема: </span>
+                <span class="product-card__property-content">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="theme"
+                        value="<%= product.theme %>"/>
+                </span>
+            </div>
+
+            <div class="product-card__annotation">
+                <span class="product-card__property-header">Аннотация: </span>
+                <span class="product-card__property-content">
+                    <textarea class="form-control"
+                              name="annotation"
+                              style="height: 100px;"><%- product.annotation %></textarea>
+                </span>
+            </div>
+
+            <div class="product-card__content">
+                <span class="product-card__property-header">Содержание: </span>
+                <span class="product-card__property-content">
+                    <textarea class="form-control"
+                              name="content"
+                              style="height: 100px;"><%- product.content %></textarea>
+                </span>
+            </div>
+
+            <div class="product-card__isbn">
+                <span class="product-card__property-header">ISBN: </span>
+                <span class="product-card__property-content">
+                    <input type="text"
+                           class="form-control"
+                           name="isbn"
+                           value="<%= product.isbn %>"/>
+                </span>
+            </div>
+
+            <div class="price product-card__price">
+                    <span class="price__value">Цена:
+                        <input type="text"
+                               class="form-control"
+                               name="price"
+                               value="<%= product.price %>"/>
+                    </span>
+                <span class="price__currency"> p.</span>
+            </div>
+
+            <button class="button button_type_buy button__control product-card__buy i-bem"
+                    data-bem="{&quot;button&quot;:{}}"
+                    role="button">Сохранить
+            </button>
+
+        </div>
+
+        <div class="product-card__column product-card__column_position_right">
+            <div class="product-card__balance">
+                Баланс: <input type="text"
+                               class="form-control"
+                               name="balance"
+                               value="<%= product.balance %>"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+
