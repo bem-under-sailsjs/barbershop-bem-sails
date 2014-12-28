@@ -1,3 +1,7 @@
+<% if (res.locals.currentUser && res.locals.currentUser.isAdmin) { %>
+    <a style="border: 1px solid; padding: 10px; display: inline-block; margin-bottom: 20px;" href="/product/new">Добавить продукт</a>
+<% } %>
+
 <% products.forEach(function(product) { %>
 <div class="product-card">
     <div class="product-card__header"><%= product.header %></div>
