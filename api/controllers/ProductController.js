@@ -29,7 +29,7 @@ module.exports = {
     /**
      * `ProductController.create()`
      */
-    create: function(req, res) {
+    create: function(req, res, next) {
 
         req.file('image')
             .upload({
@@ -68,32 +68,13 @@ module.exports = {
      * `ProductController.new()`
      */
     'new': function(req, res) {
-
-        var productStub = {
-            publisher: 'string', // Наименование журнала (издания)
-            publishing_year: 'number', // Год издания
-            number: 'number', // номер
-            subject: 'string', // Тематика
-            theme: 'string', // Тема
-            annotation: 'string',  // Аннотация
-            content: 'string', // Содержание
-            isbn: 'string', // ISBN
-            price: 'integer', // Цена
-            tags: 'array', // Тэги
-            image: 'string', // Обложка
-            header: 'string', // заголовок
-            balance: 'string', // Баланс
-            text: 'string'  //
-        };
-
-        // TODO: make one view with edit
-        res.view('product/new', { product: productStub });
+        res.view('product/new', { product: {} });
     },
 
     /**
      * `ProductController.update()`
      */
-    update: function(req, res) {
+    update: function(req, res, next) {
 
         req.file('image')
             .upload({
@@ -120,7 +101,7 @@ module.exports = {
     /**
      * `ProductController.delete()`
      */
-    'delete': function(req, res) {
+    'delete': function(req, res, next) {
         var productId = req.param('id');
 
         Product.findOne({id: productId}, function(err, product) {

@@ -25,10 +25,16 @@ module.exports = {
      */
     download: function(req, res, next) {
 
+        // TODO: fix this:
+        if (req.param('id') === 'undefined') return next();
+
         // Get image's path
         var uploadDir = sails.config.fileUpload.uploadDir,
-            filePath = path.resolve(uploadDir, req.param('id')),
-            filePathWithSize,
+            filePath = path.resolve(uploadDir, req.param('id'));
+
+        if (! fs.existsSync(filePath)) return next();
+
+        var filePathWithSize,
 
         // Get required image size
             height = req.query.h || null,
@@ -40,7 +46,7 @@ module.exports = {
         filePathWithSize = path.resolve(uploadDir, sizeNamePart + req.param('id'));
 
         // If image with required size isn't present
-        if (!fs.existsSync(filePathWithSize)) {
+        if (! fs.existsSync(filePathWithSize)) {
             gm(filePath)
                 .resize(width, height)
                 .write(filePathWithSize, function(err) {
