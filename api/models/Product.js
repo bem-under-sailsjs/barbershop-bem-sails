@@ -17,10 +17,10 @@ module.exports = {
         content: 'string', // Содержание
         isbn: 'string', // ISBN
         price: 'integer', // Цена
-        tags: 'array', // Тэги
+        //tags: 'array', // Тэги
         image: 'string', // Обложка
         header: 'string', // заголовок
-        balance: 'string', // Баланс
+        balance: 'number', // Баланс
         text: 'string'  //
     },
 
