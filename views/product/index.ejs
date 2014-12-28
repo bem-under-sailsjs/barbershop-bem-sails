@@ -4,7 +4,13 @@
     <div class="product-card__columns">
 
         <div class="product-card__column product-card__column_position_left">
-            Обложка: <%= product.image %>
+            <div style="width: 200px;">
+            <% if (product.image) { %>
+                <img class="image"
+                     src="<%= '/uploads/' + product.image + '?w=170' %>"
+                     alt="<%= product.header %>"/>
+            <% } %>
+            </div>
         </div>
 
         <div class="product-card__column product-card__column_position_center">
