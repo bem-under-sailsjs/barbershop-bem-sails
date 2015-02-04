@@ -12,7 +12,7 @@ module.exports = {
      */
     index: function(req, res) {
         Product.find(function(err, products) {
-            res.view('product/index', {products: products});
+            sails.bemRender(res,  products);
         });
     },
 
@@ -21,7 +21,8 @@ module.exports = {
      */
     show: function(req, res) {
         Product.findOne({id: req.param('id')}, function(err, product) {
-            res.view('product/show', {product: product});
+            //res.view('product/show', {product: product});
+            sails.bemRender(res,  {product: product});
         });
 
     },

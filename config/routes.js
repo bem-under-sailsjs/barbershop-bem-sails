@@ -68,5 +68,8 @@ module.exports.routes = {
     'post /user/:id/update': 'UserController.update',
 
     // Files
-    'get /uploads/:id': 'FileController.download'
+    'get /uploads/:id': 'FileController.download',
+
+    // CSS and JS
+    'get /views/desktop.bundles/merged/:file': 'FileController.getStatic'
 };

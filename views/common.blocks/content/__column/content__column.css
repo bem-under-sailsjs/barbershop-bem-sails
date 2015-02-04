@@ -1,0 +1,5 @@
+.content__column
+{
+    display: table-cell;
+    vertical-align: top;
+}

@@ -1,0 +1,9 @@
+.product-card__image
+{
+    width: 370px;
+}
+
+.product-card__image.image
+{
+    border: 1px solid #e5e1de;
+}

@@ -1,0 +1,4 @@
+block('product')(
+    elem('head').tag()('span'),
+    elem('text').tag()('span')
+);

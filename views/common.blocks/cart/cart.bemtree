@@ -1,0 +1,24 @@
+block('cart')(
+    content()(function() {
+        return [
+            {
+                elem: 'info',
+                content: [
+                    'В вашей корзине ',
+                    {
+                        elem: 'count',
+                        value: 6,
+                        pluralize: ['товар', 'товара', 'товаров']
+                    }
+                ]
+            },
+            {
+                elem: 'icon'
+            },
+            {
+                elem: 'order',
+                content: 'Оформить заказ'
+            }
+        ];
+    })
+);

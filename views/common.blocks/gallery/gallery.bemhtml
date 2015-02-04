@@ -1,0 +1,11 @@
+block('gallery')(
+
+    elem('items')(tag()('ul')),
+    elem('item')(tag()('li')),
+
+    elem('control').content()(
+        function() {
+            return this.ctx.mods.direction === 'prev'? '<' : '>';
+        }
+    )
+);

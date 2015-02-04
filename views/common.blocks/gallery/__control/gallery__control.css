@@ -1,0 +1,14 @@
+.gallery__control
+{
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    color: #cc3333;
+    font-size: 40px;
+    font-family: serif;
+    cursor: pointer;
+    line-height: 40px;
+}

@@ -1,0 +1,15 @@
+.input_type_search
+{
+}
+
+.input_type_search .input__control
+{
+    display: inline-block;
+    width: 630px;
+    background: #f0f0f0;
+    border: 0;
+    font-size: 16px;
+    padding: 10px 5px;
+    outline: none;
+    -webkit-appearance: none;
+}

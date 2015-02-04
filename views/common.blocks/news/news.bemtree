@@ -1,0 +1,42 @@
+block('news')(
+    content()(function() {
+        return [
+            {
+                elem: 'header',
+                mix: [{ block: 'content', elem: 'header' }],
+                content: 'Новости'
+            },
+            {
+                elem: 'content',
+                content: [
+                    {
+                        block: 'news-item',
+                        content: [
+                            {
+                                elem: 'date',
+                                content: '1.09.2014'
+                            },
+                            {
+                                elem: 'content',
+                                content: 'Дорогие друзья, рады приветствовать в нашей группе, посвященной проекту «Ник Перумов.'
+                            }
+                        ]
+                    },
+                    {
+                        block: 'news-item',
+                        content: [
+                            {
+                                elem: 'date',
+                                content: '1.09.2014'
+                            },
+                            {
+                                elem: 'content',
+                                content: 'Дорогие друзья, рады приветствовать в нашей группе, посвященной проекту «Ник Перумов. Миры». Это уникальный межавторский литератур-'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+    })
+);

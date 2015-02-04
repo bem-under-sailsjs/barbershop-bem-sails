@@ -1,0 +1,8 @@
+block('product-card')(
+    elem('property-header')(
+        tag()('span')
+    ),
+    elem('property-content')(
+        tag()('span')
+    )
+);

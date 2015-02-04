@@ -1,0 +1,9 @@
+block('product')(
+
+    mod('type', 'actions')(
+        content()({
+            elem: 'image',
+            src: 'img/1.jpg'
+        })
+    )
+);

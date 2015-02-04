@@ -1,0 +1,44 @@
+block('gallery')(
+    content()(function() {
+        var header = this.ctx.header;
+        return [
+            {
+                elem: 'header',
+                mix: [header],
+                content: header.content
+            },
+            {
+                elem: 'content',
+                content: [
+                    {
+                        elem: 'control',
+                        mods: {direction: 'prev'}
+                    },
+                    {
+                        elem: 'items',
+                        mix: [{elem: 'viewport'}],
+                        content: (function() {
+                            var content = [];
+
+                            for (var i = 0; i < 9; i++) {
+                                content.push({
+                                    elem: 'item',
+                                    content: {
+                                        block: 'image',
+                                        url: 'img/' + Math.ceil(Math.random() * 9) + '.jpg'
+                                    }
+                                });
+                            }
+                            return content;
+
+                        }())
+                    },
+                    {
+                        elem: 'control',
+                        mods: {direction: 'next'}
+                    }
+                ]
+            }
+        ];
+    })
+);

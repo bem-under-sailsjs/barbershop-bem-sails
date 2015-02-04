@@ -1,0 +1,15 @@
+block('partners')(
+    content()(function() {
+        return [
+            {
+                elem: 'header',
+                mix: [{ block: 'content', elem: 'header' }],
+                content: 'Наши партнеры'
+            },
+            {
+                elem: 'content',
+                content: 'Партнеры'
+            }
+        ];
+    })
+);

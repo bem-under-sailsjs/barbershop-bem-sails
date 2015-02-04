@@ -1,0 +1,8 @@
+block('news-item')(
+    elem('date')(
+        tag()('span')
+    ),
+    elem('content')(
+        tag()('span')
+    )
+);

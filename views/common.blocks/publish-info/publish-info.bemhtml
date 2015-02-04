@@ -1,0 +1,15 @@
+block('publish-info')(
+    content()(function() {
+       var header = this.ctx.header;
+
+        var content = [
+            {
+                elem: 'header',
+                mix: [header],
+                content: header.content
+            },
+            this.ctx.content
+        ];
+        return content;
+    })
+);

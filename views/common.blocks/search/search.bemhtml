@@ -1,0 +1,5 @@
+block('search')(
+    elem('input')(tag()('span')),
+
+    elem('button')(tag()('span'))
+);

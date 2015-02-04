@@ -1,0 +1,10 @@
+block('login')(
+    content()(function() {
+        return [
+            {
+                elem: 'name',
+                content: 'Ирина Вишнякова'
+            }
+        ];
+    })
+);

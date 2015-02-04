@@ -1,0 +1,8 @@
+({
+
+    shouldDeps: [
+        {
+            elem: 'control'
+        }
+    ]
+});

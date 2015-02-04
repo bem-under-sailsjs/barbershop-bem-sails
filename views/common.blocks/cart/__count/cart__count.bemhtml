@@ -1,0 +1,35 @@
+block('cart')(
+    
+    elem('count').content()(
+        function() {
+            var value = this.ctx.value;
+            return [
+                {
+                    elem: 'value',
+                    tag: 'span',
+                    content: ' ' + value + ' '
+                },
+                {
+                    elem: 'unit',
+                    tag: 'span',
+                    // TODO: refactor to block-helper
+                    content: this.ctx.pluralize[(function() {
+                        if (value % 10 == 1 &&
+                            value % 100 != 11) {
+                            // 1 or N01 or N11
+                            return 0;
+                        } else if (
+                            value % 10 >= 2 && 
+                            value % 10 <= 4 && 
+                           (value % 100 < 10 || 
+                            value % 100 >= 20)) {
+                            return 1;
+                        } else {
+                            return 2;
+                        }
+                    }())]
+                }
+            ];
+        }
+    )
+);

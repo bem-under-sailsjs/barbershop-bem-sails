@@ -1,0 +1,62 @@
+match(this.ctx.data).def()(function() {
+
+    return applyCtx({
+        block: 'page',
+        cssUrl: '/views/desktop.bundles/merged/_merged.css',
+        jssUrl: '/views/desktop.bundles/merged/_merged.js',
+        title: 'Welcome to index!',
+        content: [
+            {
+                block: 'head'
+            },
+            {
+                block: 'menu',
+                mods: { type: 'main' }
+            },
+            {
+                block: 'content',
+                content: [
+                    {
+                        elem: 'column',
+                        mods: { position: 'left' },
+                        content: [
+                            {
+                                block: 'promo'
+                            },
+                            {
+                                block: 'actions'
+                            },
+                            {
+                                block: 'news'
+                            },
+                            {
+                                block: 'partners'
+                            },
+                            {
+                                block: 'social-share'
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'column',
+                        mods: { position: 'right' },
+                        content: [
+                            {
+                                block: 'catalog',
+                                content: (function() {
+                                    var content = [];
+
+                                    for (var i = 0; i < 3; i++) {
+                                        content.push({ block: 'section' });
+                                    }
+
+                                    return content;
+                                }())
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    });
+});

@@ -1,0 +1,77 @@
+match(this.ctx.data).def()(function() {
+
+    return applyCtx({
+        block: 'page',
+        cssUrl: '_product.css',
+        jssUrl: '_product.js',
+        title: 'Welcome to product!',
+        content: [
+            {
+                block: 'head'
+            },
+            {
+                block: 'menu',
+                mods: { type: 'main' }
+            },
+            {
+                block: 'content',
+                content: [
+                    {
+                        elem: 'column',
+                        mods: { position: 'left' },
+                        content: [
+                            {
+                                block: 'promo'
+                            },
+                            {
+                                block: 'actions'
+                            },
+                            {
+                                block: 'news'
+                            },
+                            {
+                                block: 'partners'
+                            },
+                            {
+                                block: 'social-share'
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'column',
+                        mods: { position: 'right' },
+                        content: [
+                            {
+                                block: 'breadcrumb',
+                                content: [
+                                    {
+                                        elem: 'item',
+                                        content: 'Главная',
+                                        url: '/'
+                                    },
+                                    {
+                                        elem: 'item',
+                                        content: 'Schrumdirum',
+                                        url: '/catalog/section/schrumdirum/'
+                                    },
+                                    {
+                                        elem: 'item',
+                                        content: '2014',
+                                        url: '/catalog/year/2014/'
+                                    },
+                                    {
+                                        elem: 'item',
+                                        content: '#3, Бавария'
+                                    }
+                                ]
+                            },
+                            {
+                                block: 'product-card'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    });
+});

@@ -58,5 +58,17 @@ module.exports = {
             var readStream = fs.createReadStream(filePathWithSize);
             readStream.pipe(res);
         }
+    },
+
+    getStatic: function(req, res, next) {
+        var file = req.param('file');
+
+        // TODO: fix this:
+        if (file === 'undefined') return next();
+
+        var filePath = path.resolve(__dirname, sails.config.fileUpload.staticDir, file);
+        var readStream = fs.createReadStream(filePath);
+
+        readStream.pipe(res);
     }
 };

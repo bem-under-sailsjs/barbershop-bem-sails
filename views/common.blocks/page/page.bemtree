@@ -1,0 +1,15 @@
+block('page').def()(function() {
+
+    this.ctx = this.extend(this.ctx, {
+        head: [
+            {elem: 'css', url: this.ctx.cssUrl}
+        ]
+    });
+
+    this.ctx.content.push(
+        { block: 'footer' },
+        {elem: 'js', url: this.ctx.jssUrl}
+    );
+
+    return applyNext();
+});

@@ -1,0 +1,26 @@
+.breadcrumb__item
+{
+    display: inline-block;
+    vertical-align: top;
+    color: #919091;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.breadcrumb__item:after
+{
+    content: '--->>';
+    margin: 0 10px;
+    color: #9e9d9e;
+    font-family: serif;
+}
+
+.breadcrumb__item:last-child:after
+{
+    display: none;
+}
+
+.breadcrumb__item > .link
+{
+    color: #919091;
+}

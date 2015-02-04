@@ -1,0 +1,7 @@
+block('cart')(
+    elem('order')(
+        content()(function() {
+            return { block: 'link', content: 'Оформить заказ', url: '/cart/' };
+        })
+    )
+);

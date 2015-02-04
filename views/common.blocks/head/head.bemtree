@@ -1,0 +1,34 @@
+block('head')(
+    content()(function() {
+            return [
+                {
+                    elem: 'column',
+                    content: {
+                        block: 'logo'
+                    }
+                },
+                {
+                    elem: 'column',
+                    content: [
+                        {
+                            block: 'site-name'
+                        },
+                        {
+                            block: 'search'
+                        }
+                    ]
+                },
+                {
+                    elem: 'column',
+                    content: [
+                        {
+                            block: 'login'
+                        },
+                        {
+                            block: 'cart'
+                        }
+                    ]
+                }
+            ];
+        }
+    ));

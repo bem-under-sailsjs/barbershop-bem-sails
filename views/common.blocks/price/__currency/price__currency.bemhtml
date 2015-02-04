@@ -1,0 +1,13 @@
+block('price')(
+    elem('currency')(
+        tag()('span'),
+
+        match(function() { return this.ctx.currency === 'rub' })(
+            content()(' p.')
+        ),
+
+        match(function() { return this.ctx.currency === 'usd' })(
+            content()('$')
+        )
+    )
+);

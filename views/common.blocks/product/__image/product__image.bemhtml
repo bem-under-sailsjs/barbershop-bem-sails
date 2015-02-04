@@ -1,0 +1,6 @@
+block('product')(
+    elem('image')(
+        tag()('img'),
+        attrs()(function(){ return { src: this.ctx.src } })
+    )
+);

@@ -1,0 +1,48 @@
+block('product')(
+    content()(function() {
+
+            return [
+                {
+                    elem: 'image',
+                    src: 'img/' + Math.ceil(Math.random() * 9) + '.jpg'
+                },
+                {
+                    elem: 'title',
+                    content: '#9, 2014'
+                },
+                {
+                    elem: 'info',
+                    content: [
+                        {
+                            elem: 'head',
+                            content: 'Тема: '
+                        },
+                        {
+                            elem: 'text',
+                            content: 'Бавария Бавария Бавария'
+                        }
+                    ]
+                },
+                {
+                    block: 'link',
+                    mix: { block: 'product', elem: 'link' },
+                    content: 'Подробнее',
+                    url: '/items/1'
+                },
+                {
+                    block: 'price',
+                    mix: [{ block: 'product', elem: 'price' }],
+                    value: '100',
+                    currency: 'rub'
+                },
+                {
+                    elem: 'buy',
+                    content: {
+                        block: 'button',
+                        mods: {type: 'buy'},
+                        content: 'Купить'
+                    }
+                }
+            ];
+        }
+));

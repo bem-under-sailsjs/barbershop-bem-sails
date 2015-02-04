@@ -1,0 +1,35 @@
+block('menu')(
+    content()(function() {
+
+            return {
+                elem: 'items',
+                content: [
+                    {
+                        elem: 'item',
+                        content: 'Об издательстве',
+                        url: '/item/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Как оформить заказ',
+                        url: '/item/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Доставка и оплата',
+                        url: '/item/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Предзаказ',
+                        url: '/item/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Контакты',
+                        url: '/item/'
+                    }
+                ]
+            };
+        }
+    ));

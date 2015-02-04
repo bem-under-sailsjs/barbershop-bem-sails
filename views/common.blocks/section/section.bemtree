@@ -1,0 +1,44 @@
+block('section')(
+    content()(function() {
+
+            return [
+                {
+                    elem: 'top',
+                    content: [
+                        {
+                            elem: 'header',
+                            content: 'Schrumdirum'
+                        },
+                        {
+                            elem: 'link',
+                            content: {
+                                block: 'link',
+                                content: 'все номера журнала Schrumdirum',
+                                url: '/items/1'
+                            }
+                        }
+                    ]
+                },
+                {
+                    elem: 'items',
+                    content: (function() {
+                        var content = [];
+
+                        for (var i = 0; i < 10; i++) {
+                            content.push(
+                                {
+                                    block: 'catalog',
+                                    elem: 'item',
+                                    mix: [{ block: 'section', elem: 'item' }],
+                                    content: { block: 'product' }
+                                }
+                            );
+                        }
+
+                        return content;
+
+                    }())
+                }
+            ];
+        }
+    ));

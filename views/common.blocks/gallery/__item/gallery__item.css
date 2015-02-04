@@ -1,0 +1,13 @@
+.gallery__item
+{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20px 0 0;
+}
+
+.gallery__item > .image
+{
+    width: 138px;
+    height: 182px;
+    border: 1px solid #e5e1de;
+}

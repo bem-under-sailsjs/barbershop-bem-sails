@@ -1,0 +1,7 @@
+block('logo')(
+    tag()('img'),
+    attrs()(function() {
+        return { src: 'img/logo.png' }; // TODO: make svg logo
+    })
+
+);

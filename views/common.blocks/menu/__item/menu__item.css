@@ -1,0 +1,9 @@
+.menu__item
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 19%;
+    text-align: center;
+    color: #6699cc;
+    font-family: Arial;
+}

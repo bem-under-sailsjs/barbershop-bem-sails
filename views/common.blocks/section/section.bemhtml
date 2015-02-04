@@ -1,0 +1,8 @@
+block('section')(
+    elem('header')(
+        tag()('span')
+    ),
+    elem('link')(
+        tag()('span')
+    )
+);
