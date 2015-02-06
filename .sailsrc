@@ -3,6 +3,6 @@
     "modules": {}
   },
   "hooks": {
-        "grunt": false
-    }
+    "grunt": false
+  }
 }

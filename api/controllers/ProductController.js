@@ -12,7 +12,7 @@ module.exports = {
      */
     index: function(req, res) {
         Product.find(function(err, products) {
-            sails.bemRender(res,  products);
+            res.render({data: products, page: 'products'});
         });
     },
 
@@ -21,10 +21,8 @@ module.exports = {
      */
     show: function(req, res) {
         Product.findOne({id: req.param('id')}, function(err, product) {
-            //res.view('product/show', {product: product});
-            sails.bemRender(res,  {product: product});
+            res.render({data: product, page: 'product'});
         });
-
     },
 
     /**
@@ -61,7 +59,7 @@ module.exports = {
      */
     edit: function(req, res) {
         Product.findOne({id: req.param('id')}, function(err, product) {
-            res.view('product/edit', {product: product});
+            res.render({data: {product: product}, page: 'product-edit'});
         });
     },
 
@@ -69,7 +67,7 @@ module.exports = {
      * `ProductController.new()`
      */
     'new': function(req, res) {
-        res.view('product/new', { product: {} });
+        res.render({data: {product: {}}, page: 'product-new'});
     },
 
     /**

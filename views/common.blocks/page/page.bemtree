@@ -1,15 +1,18 @@
-block('page').def()(function() {
-
-    this.ctx = this.extend(this.ctx, {
-        head: [
-            {elem: 'css', url: this.ctx.cssUrl}
+match(this.ctx.data)
+    .def()(function() {
+    return applyCtx({
+        block: 'page',
+        head: [{elem: 'css', url: '/views/desktop.bundles/merged/_merged.css'}],
+        title: this.ctx.data.title,
+        content: [
+            {block: 'head'},
+            {block: 'menu'},
+            {
+                block: 'content',
+                content: JSON.stringify(this.ctx)
+            },
+            {block: 'footer'},
+            {elem: 'js', url: '/views/desktop.bundles/merged/_merged.js'}
         ]
     });
-
-    this.ctx.content.push(
-        { block: 'footer' },
-        {elem: 'js', url: this.ctx.jssUrl}
-    );
-
-    return applyNext();
 });

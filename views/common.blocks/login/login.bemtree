@@ -3,7 +3,7 @@ block('login')(
         return [
             {
                 elem: 'name',
-                content: 'Ирина Вишнякова'
+                content: 'Имя пользователя'
             }
         ];
     })

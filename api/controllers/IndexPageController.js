@@ -11,7 +11,6 @@ module.exports = {
      * `IndexPageController.index()`
      */
     index: function(req, res) {
-        res.view('index');
+        res.render({data: 'index page data', page: 'index'});
     }
 };
-

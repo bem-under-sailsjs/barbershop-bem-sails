@@ -23,20 +23,5 @@ module.exports.bootstrap = function(cb) {
         fs.mkdirSync(sails.config.fileUpload.uploadDir, {mode: '0775'});
     }
 
-    sails.BEMTREE = require('../views/desktop.bundles/merged/merged.bemtree.js').BEMTREE;
-    sails.BEMHTML = require('../views/desktop.bundles/merged/merged.bemhtml.js').BEMHTML;
-
-    // TODO: experiment
-    sails.bemRender = function(res, data) {
-
-        sails
-            .BEMTREE
-            .apply({data: data})
-            .then(function(bemjson) {
-                res.set('Content-Type', 'text/html');
-                res.send(sails.BEMHTML.apply(bemjson));
-            });
-    };
-
     cb();
 };

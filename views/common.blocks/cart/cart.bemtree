@@ -7,7 +7,7 @@ block('cart')(
                     'В вашей корзине ',
                     {
                         elem: 'count',
-                        value: 6,
+                        value: 0,
                         pluralize: ['товар', 'товара', 'товаров']
                     }
                 ]

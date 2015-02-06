@@ -1,7 +1,8 @@
 ({
     shouldDeps: [
-        {
-            block: 'footer'
-        }
+        {block: 'head'},
+        {block: 'menu'},
+        {block: 'content'},
+        {block: 'footer'}
     ]
 });

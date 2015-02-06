@@ -1,33 +1,32 @@
 block('menu')(
     content()(function() {
-
             return {
                 elem: 'items',
                 content: [
                     {
                         elem: 'item',
                         content: 'Об издательстве',
-                        url: '/item/'
+                        url: '/about/'
                     },
                     {
                         elem: 'item',
                         content: 'Как оформить заказ',
-                        url: '/item/'
+                        url: '/how-to-order/'
                     },
                     {
                         elem: 'item',
                         content: 'Доставка и оплата',
-                        url: '/item/'
+                        url: '/delivery/'
                     },
                     {
                         elem: 'item',
                         content: 'Предзаказ',
-                        url: '/item/'
+                        url: '/reservation/'
                     },
                     {
                         elem: 'item',
                         content: 'Контакты',
-                        url: '/item/'
+                        url: '/contacts/'
                     }
                 ]
             };
