@@ -1,25 +1,26 @@
 block('product')(
     content()(function() {
+            var product = this.ctx.data;
 
             return [
                 {
                     elem: 'image',
-                    src: 'img/' + Math.ceil(Math.random() * 9) + '.jpg'
+                    src: 'img/' + product.image
                 },
                 {
                     elem: 'title',
-                    content: '#9, 2014'
+                    content: product.title
                 },
                 {
                     elem: 'info',
                     content: [
                         {
                             elem: 'head',
-                            content: 'Тема: '
+                            content: product.head
                         },
                         {
                             elem: 'text',
-                            content: 'Бавария Бавария Бавария'
+                            content: product.text
                         }
                     ]
                 },
@@ -27,12 +28,12 @@ block('product')(
                     block: 'link',
                     mix: { block: 'product', elem: 'link' },
                     content: 'Подробнее',
-                    url: '/items/1'
+                    url: '/product/' + product.id
                 },
                 {
                     block: 'price',
                     mix: [{ block: 'product', elem: 'price' }],
-                    value: '100',
+                    value: product.price,
                     currency: 'rub'
                 },
                 {

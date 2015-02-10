@@ -1,9 +1,11 @@
 block('product-card')(
     content()(function() {
+        var product = this.ctx.data;
+
         return [
             {
                 elem: 'header',
-                content: 'Schrumdirum, #3, 2014, Бавария'
+                content: product.header
             },
             {
                 elem: 'columns',
@@ -14,7 +16,7 @@ block('product-card')(
                         content: {
                             block: 'image',
                             mix: [{ block: 'product-card', elem: 'image' }],
-                            url: 'img/' + Math.ceil(Math.random() * 9) + '.jpg'
+                            url: 'img/' + product.image
                         }
                     },
                     {
@@ -23,33 +25,24 @@ block('product-card')(
                         content: [
                             {
                                 elem: 'theme',
-                                content: 'Бавария'
+                                content: product.theme
                             },
                             {
                                 elem: 'annotation',
-                                content: 'Журнал посвящен страноведению. Бавария во всех проявлениях: ' +
-                                'литература, художники, достопримечательности и современ- ная жизнь.'
+                                content: product.annotation
                             },
                             {
                                 elem: 'content',
-                                content: [
-                                    'Введение',
-                                    '<br>',
-                                    'Главные праздники',
-                                    '<br>',
-                                    'Меню баварца',
-                                    '<br>',
-                                    'Трагедии в литературе'
-                                ]
+                                content: product.content
                             },
                             {
                                 elem: 'isbn',
-                                content: '978-5-00057-219-1'
+                                content: product.isbn
                             },
                             {
                                 block: 'price',
                                 mix: [{ block: 'product-card', elem: 'price' }],
-                                value: '100',
+                                value: product.price,
                                 currency: 'rub'
                             },
                             {
@@ -70,26 +63,11 @@ block('product-card')(
                             },
                             {
                                 elem: 'e-buy-info',
-                                content: 'Купить в элек- тронном варианте'
+                                content: 'Купить в электронном варианте'
                             }
                         ]
                     }
                 ]
-            },
-            {
-                block: 'gallery',
-                mix: [{ block: 'product-card', elem: 'spreads' }],
-                header: { block: 'product-card', elem: 'info-header', content: 'Развороты' }
-            },
-            {
-                block: 'reviews',
-                mix: [{ block: 'product-card', elem: 'reviews' }],
-                header: { block: 'product-card', elem: 'info-header', content: 'Отзывы' }
-            },
-            {
-                block: 'publish-info',
-                mix: [{ block: 'product-card', elem: 'publish-info' }],
-                header: { block: 'product-card', elem: 'info-header', content: 'Об издании Schrumdirum' }
             }
         ];
     })

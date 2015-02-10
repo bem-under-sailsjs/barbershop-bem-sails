@@ -12,7 +12,30 @@ module.exports = {
      */
     index: function(req, res) {
         Product.find(function(err, products) {
-            res.render({data: products, page: 'products'});
+
+            products = [
+                {
+                    header: '1',
+                    image: '1.jpg',
+                    theme: 'theme 1',
+                    annotation: 'annotation 1',
+                    content: 'content 1',
+                    isbn: 'isbn 1',
+                    price: 'price 1'
+                },
+                {
+                    header: '2',
+                    image: '2.jpg',
+                    theme: 'theme 2',
+                    annotation: 'annotation 2',
+                    content: 'content 2',
+                    isbn: 'isbn 2',
+                    price: 'price 2'
+                }
+            ];
+
+            // TODO: pass controller/action another way
+            res.render({data: {products: products}, controller: 'product', action: 'index'});
         });
     },
 

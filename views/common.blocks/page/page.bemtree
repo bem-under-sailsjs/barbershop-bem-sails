@@ -8,8 +8,10 @@ match(this.ctx.data)
             {block: 'head'},
             {block: 'menu'},
             {
-                block: 'content',
-                content: JSON.stringify(this.ctx)
+                block: 'controller',
+                elem: this.ctx.controller,
+                mods: {action: this.ctx.action},
+                data: this.ctx.data
             },
             {block: 'footer'},
             {elem: 'js', url: '/views/desktop.bundles/merged/_merged.js'}

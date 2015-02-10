@@ -12,9 +12,6 @@ block('head')(
                     content: [
                         {
                             block: 'site-name'
-                        },
-                        {
-                            block: 'search'
                         }
                     ]
                 },

@@ -1,0 +1,32 @@
+block('controller')
+    .elem('product')
+    .mod('action', 'index')
+    .def()(function() {
+        return applyCtx({
+            block: 'content',
+            content: [
+                {
+                    elem: 'column',
+                    mods: {position: 'left'},
+                    content: [
+                        {
+                            block: 'link',
+                            url: '/products/',
+                            content: 'Товары'
+                        }
+                    ]
+                },
+                {
+                    elem: 'column',
+                    mods: {position: 'right'},
+                    content: [
+                        {
+                            block: 'catalog',
+                            data: this.ctx.data
+                        }
+                    ]
+                }
+            ]
+        });
+    }
+);

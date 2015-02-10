@@ -1,8 +1,10 @@
 ({
     shouldDeps: [
+        {block: 'controller'},
         {block: 'head'},
         {block: 'menu'},
         {block: 'content'},
-        {block: 'footer'}
+        {block: 'footer'},
+        {block: 'link'}
     ]
 });
