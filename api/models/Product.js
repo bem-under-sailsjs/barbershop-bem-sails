@@ -8,20 +8,9 @@
 module.exports = {
 
     attributes: {
-        publisher: 'string', // Наименование журнала (издания)
-        publishing_year: '', // Год издания
-        number: 'number', // номер
-        subject: 'string', // Тематика
-        theme: 'string', // Тема
-        annotation: 'string',  // Аннотация
-        content: 'string', // Содержание
-        isbn: 'string', // ISBN
-        price: 'integer', // Цена
-        //tags: 'array', // Тэги
-        image: 'string', // Обложка
-        header: 'string', // заголовок
-        balance: 'number', // Баланс
-        text: 'string'  //
+        title: 'string',
+        image: 'string',
+        price: 'integer'
     },
 
     toJSON: function() {
@@ -31,7 +20,14 @@ module.exports = {
         return obj;
     },
 
+    beforeValidate: function(values, next) {
+        // don't save _csrf token in database
+        if(values._csrf) delete values._csrf;
+        next();
+    },
+
     /**
+     * TODO: is it necessary?
      * Create stub to product
      */
     'new': function() {

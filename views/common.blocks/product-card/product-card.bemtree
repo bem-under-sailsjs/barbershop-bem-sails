@@ -1,74 +1,8 @@
-block('product-card')(
-    content()(function() {
-        var product = this.ctx.data;
-
-        return [
-            {
-                elem: 'header',
-                content: product.header
-            },
-            {
-                elem: 'columns',
-                content: [
-                    {
-                        elem: 'column',
-                        mods: { position: 'left' },
-                        content: {
-                            block: 'image',
-                            mix: [{ block: 'product-card', elem: 'image' }],
-                            url: 'img/' + product.image
-                        }
-                    },
-                    {
-                        elem: 'column',
-                        mods: { position: 'center' },
-                        content: [
-                            {
-                                elem: 'theme',
-                                content: product.theme
-                            },
-                            {
-                                elem: 'annotation',
-                                content: product.annotation
-                            },
-                            {
-                                elem: 'content',
-                                content: product.content
-                            },
-                            {
-                                elem: 'isbn',
-                                content: product.isbn
-                            },
-                            {
-                                block: 'price',
-                                mix: [{ block: 'product-card', elem: 'price' }],
-                                value: product.price,
-                                currency: 'rub'
-                            },
-                            {
-                                block: 'button',
-                                mix: [{ block: 'product-card', elem: 'buy' }],
-                                mods: {type: 'buy'},
-                                content: 'Купить'
-                            }
-                        ]
-                    },
-                    {
-                        elem: 'column',
-                        mods: { position: 'right' },
-                        content: [
-                            {
-                                elem: 'balance',
-                                content: 'Журнал в бумажном виде закончился (Нет в наличии)'
-                            },
-                            {
-                                elem: 'e-buy-info',
-                                content: 'Купить в электронном варианте'
-                            }
-                        ]
-                    }
-                ]
-            }
-        ];
-    })
-);
+block('product-card')
+    .def()(function() {
+    return applyCtx({
+        block: 'product-card',
+        mods: this.ctx.mods,
+        data: this.ctx.data
+    });
+});

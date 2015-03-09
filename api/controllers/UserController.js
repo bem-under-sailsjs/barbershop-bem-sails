@@ -15,7 +15,7 @@ module.exports = {
             if (!user) {
                 res.notFound()
             } else {
-                res.view('user/show', {user: user});
+                res.render({data: {user: user}});
             }
         });
     },
@@ -24,7 +24,7 @@ module.exports = {
         User.findOne(req.param('id'), function(err, user) {
             if (err) next(err);
 
-            res.view('user/edit', {user: user});
+            res.render({data: {user: user}});
         });
     },
 

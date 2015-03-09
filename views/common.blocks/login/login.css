@@ -1,4 +1,11 @@
 .login
 {
-    color: #6699cc;
+    margin: 15px;
+}
+
+
+
+.login__header
+{
+    margin: 10px;
 }

@@ -1,0 +1,61 @@
+block('product-card').mod('type', 'edit')(
+    def()(function() {
+        var product = this.ctx.data.product;
+
+        applyCtx({
+            block: 'form',
+            enctype: 'multipart/form-data',
+            action: '/product/' + product.id + '/update/',
+            method: 'post',
+            data: this.ctx.data,
+            content: [
+                {
+                    block: 'product-card',
+                    content: [
+                        {
+                            elem: 'title',
+                            content: {
+                                block: 'input',
+                                mods: {theme: 'islands', size: 'm'},
+                                name: 'title',
+                                val: product.title
+                            }
+                        },
+                        {
+                            elem: 'image',
+                            content: [
+                                product.image && ({
+                                    block: 'image',
+                                    url:  product.image,
+                                    title: product.title,
+                                    alt: product.title
+                                }),
+                                {
+                                    block: 'attach',
+                                    mods: {theme: 'islands', size: 'm'},
+                                    button: 'Choose file',
+                                    noFileText: 'No file chosen',
+                                    name: 'image'
+                                }
+                            ]
+                        },
+                        {
+                            elem: 'price',
+                            content: {
+                                block: 'input',
+                                mods: {theme: 'islands', size: 'm'},
+                                name: 'price',
+                                val: product.price
+                            }
+                        }
+                    ]
+                },
+                {
+                    block: 'button',
+                    mods: {theme: 'islands', size: 'm', type: 'submit'},
+                    text: 'Save'
+                }
+            ]
+        });
+    })
+);

@@ -11,7 +11,7 @@ var tech = {
     bemdeclFromBemjson: require('enb-bem/techs/bemdecl-from-bemjson'),
 
     deps: require('enb-bem/techs/deps-old'),
-    depsProvider:  require('enb/techs/deps-provider'),
+    depsProvider: require('enb/techs/deps-provider'),
     depsMerge: require('enb/techs/deps-merge'),
 
     files: require('enb-bem/techs/files'),
@@ -39,6 +39,7 @@ var tech = {
 
 var fs = require('fs');
 
+// TODO: add touch.pad & touch.phone bundles
 if (!fs.existsSync('views/desktop.bundles/merged')) {
     fs.mkdirSync('views/desktop.bundles/merged');
 }
@@ -50,14 +51,14 @@ module.exports = function(config) {
 
                 // essential (begin)
                 // config levels
-                [tech.levels, { levels: getLevels(config) }],
+                [tech.levels, {levels: getLevels(config)}],
                 // source file
-                [tech.fileProvider, { target: '?.bemdecl.js' }],
+                [tech.fileProvider, {target: '?.bemdecl.js'}],
                 [tech.files],
                 // essential (end)
 
                 // css
-                [tech.cssStylus, { target: '?.noprefix.css' }],
+                [tech.cssStylus, {target: '?.noprefix.css'}],
                 [tech.cssAutoprefixer, {
                     sourceTarget: '?.noprefix.css',
                     destTarget: '?.css',
@@ -65,10 +66,10 @@ module.exports = function(config) {
                 }],
 
                 // bemtree
-                [tech.bemtree, { devMode: process.env.YENV === 'development' }],
+                [tech.bemtree, {devMode: process.env.YENV === 'development'}],
 
                 // bemhtml
-                [tech.bemhtml, { devMode: process.env.YENV === 'development' }],
+                [tech.bemhtml, {devMode: process.env.YENV === 'development'}],
 
                 // client bemhtml (begin)
                 [tech.bemdeclFromDepsByTech, {
@@ -98,14 +99,14 @@ module.exports = function(config) {
                     target: '?.pre.js',
                     sources: ['?.browser.bemhtml.js', '?.browser.js']
                 }],
-                [tech.prependYm, { source: '?.pre.js' }]
+                [tech.prependYm, {source: '?.pre.js'}]
             ],
             addTargets = ['?.bemtree.js', '?.bemhtml.js', '_?.css', '_?.js'];
 
+        // TODO: add touch.pad & touch.phone bundles
         if (nodeConfig.getPath() === 'desktop.bundles/merged') {
             // merged bundle (begin)
             var mergedDeps = [];
-
 
             fs.readdirSync('views/desktop.bundles').map(function(bundle) {
                 if ((/\./).test(bundle)) return;

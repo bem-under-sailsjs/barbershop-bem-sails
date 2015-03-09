@@ -2,8 +2,7 @@
 
     shouldDeps: [
         {
-            elem: 'product',
-            mods: {action: ['index']}
+            elems: ['index', 'product', 'auth']
         },
         {
             block: 'content'

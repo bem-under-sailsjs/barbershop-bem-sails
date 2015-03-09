@@ -5,7 +5,6 @@ module.exports = (function() {
     var mockData = [];
 
     for (var i = 0; i < 10; i++) {
-        console.log(i);
         mockData.push({
             header: faker.company.catchPhrase,
             image: faker.image.technics(),
@@ -13,7 +12,7 @@ module.exports = (function() {
             annotation: faker.lorem.sentence(),
             content: faker.lorem.paragraphs(),
             isbn: faker.finance.account(),
-            price: faker.finance.mask()
+            price: faker.finance.mask(3)
         });
     }
 

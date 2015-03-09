@@ -2,31 +2,46 @@ block('controller')
     .elem('product')
     .mod('action', 'index')
     .def()(function() {
-        return applyCtx({
-            block: 'content',
-            content: [
-                {
-                    elem: 'column',
-                    mods: {position: 'left'},
-                    content: [
-                        {
-                            block: 'link',
-                            url: '/products/',
-                            content: 'Товары'
-                        }
-                    ]
-                },
-                {
-                    elem: 'column',
-                    mods: {position: 'right'},
-                    content: [
-                        {
-                            block: 'catalog',
-                            data: this.ctx.data
-                        }
-                    ]
-                }
-            ]
-        });
+
+        var data = this.ctx.data;
+
+        // For dev output
+        var products = data.products && (function() {
+                return data.products.map(function(currentValue) {
+                    return {
+                        block: 'product',
+                        content: [
+                            {
+                                elem: 'title',
+                                content: currentValue.title
+                            },
+                            {
+                                elem: 'image',
+                                content: currentValue.image && ({
+                                    block: 'image',
+                                    width: '300px',
+                                    url:  currentValue.image,
+                                    title: currentValue.title,
+                                    alt: currentValue.title
+                                })
+                            },
+                            {
+                                elem: 'price',
+                                content: currentValue.price
+                            },
+                            {
+                                elem: 'controls',
+                                content: {
+                                    block: 'link',
+                                    url: '/product/' + currentValue.id + '/edit/',
+                                    content: 'Edit'
+                                }
+                            }
+                        ]
+                    };
+                });
+            }.bind(this)());
+
+        return applyCtx(products);
     }
 );

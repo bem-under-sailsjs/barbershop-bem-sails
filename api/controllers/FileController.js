@@ -6,7 +6,7 @@
  */
 
 var fs = require('fs');
-var gm = require('gm').subClass({ imageMagick: true });
+var gm = require('gm').subClass({imageMagick: true});
 var path = require('path');
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
         var uploadDir = sails.config.fileUpload.uploadDir,
             filePath = path.resolve(uploadDir, req.param('id'));
 
-        if (! fs.existsSync(filePath)) return next();
+        if (!fs.existsSync(filePath)) return next();
 
         var filePathWithSize,
 
@@ -46,7 +46,7 @@ module.exports = {
         filePathWithSize = path.resolve(uploadDir, sizeNamePart + req.param('id'));
 
         // If image with required size isn't present
-        if (! fs.existsSync(filePathWithSize)) {
+        if (!fs.existsSync(filePathWithSize)) {
             gm(filePath)
                 .resize(width, height)
                 .write(filePathWithSize, function(err) {

@@ -1,44 +1,48 @@
 block('section')(
-    content()(function() {
+    def()(function() {
+            var data = this.ctx.data;
 
-            return [
-                {
-                    elem: 'top',
-                    content: [
-                        {
-                            elem: 'header',
-                            content: 'Schrumdirum'
-                        },
-                        {
-                            elem: 'link',
-                            content: {
-                                block: 'link',
-                                content: 'все номера журнала Schrumdirum',
-                                url: '/items/1'
-                            }
-                        }
-                    ]
-                },
-                {
-                    elem: 'items',
-                    content: (function() {
-                        var content = [];
-
-                        for (var i = 0; i < 10; i++) {
-                            content.push(
-                                {
-                                    block: 'catalog',
-                                    elem: 'item',
-                                    mix: [{ block: 'section', elem: 'item' }],
-                                    content: { block: 'product' }
+            return applyCtx({
+                block: 'section',
+                content: [
+                    {
+                        elem: 'top',
+                        content: [
+                            {
+                                elem: 'header',
+                                content: 'TODO'
+                            },
+                            {
+                                elem: 'link',
+                                content: {
+                                    block: 'link',
+                                    content: 'TODO',
+                                    url: 'TODO'
                                 }
-                            );
-                        }
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'items',
+                        content: (function() {
+                            var content = [];
 
-                        return content;
+                            data.products.forEach(function(product) {
+                                content.push(
+                                    {
+                                        block: 'catalog',
+                                        elem: 'item',
+                                        mix: [{block: 'section', elem: 'item'}],
+                                        content: {block: 'product', data: product}
+                                    }
+                                );
+                            });
 
-                    }())
-                }
-            ];
+                            return content;
+                        }())
+                    }
+                ]
+            });
+
         }
     ));

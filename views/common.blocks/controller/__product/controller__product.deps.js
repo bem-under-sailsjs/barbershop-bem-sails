@@ -1,6 +1,8 @@
 ({
-    mustDeps: [],
     shouldDeps: [
+        {
+            mods: {action: ['index', 'edit', 'show']}
+        },
         {
             block: 'product'
         },

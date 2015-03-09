@@ -1,16 +1,8 @@
 block('catalog')
     .def()(function() {
-        var products = [];
-
-        this.ctx.data.products.forEach(function(product) {
-            products.push({
-                block: 'product',
-                data: product
-            });
+        return applyCtx({
+            block: 'section',
+            data: this.ctx.data
         });
-
-        console.log("products: ", products);
-
-        return applyCtx(products);
     }
 );

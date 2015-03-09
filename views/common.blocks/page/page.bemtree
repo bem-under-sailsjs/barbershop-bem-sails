@@ -1,19 +1,50 @@
 match(this.ctx.data)
     .def()(function() {
+    var data = this.ctx.data;
+
     return applyCtx({
         block: 'page',
         head: [{elem: 'css', url: '/views/desktop.bundles/merged/_merged.css'}],
-        title: this.ctx.data.title,
+        title: data.title,
         content: [
-            {block: 'head'},
-            {block: 'menu'},
+            {
+                block: 'head',
+                data: data
+            },
+            {
+                block: 'menu',
+                mods: {theme: 'islands', size: 'm'},
+                content: [
+                    {
+                        block: 'menu-item',
+                        mods: {type: 'link'},
+                        content: {
+                            block: 'link',
+                            url: '/',
+                            content: 'Main'
+                        }
+                    },
+                    {
+                        block: 'menu-item',
+                        mods: {type: 'link'},
+                        content: {
+                            block: 'link',
+                            url: '/products/',
+                            content: 'Products'
+                        }
+                    }
+                ]
+            },
             {
                 block: 'controller',
-                elem: this.ctx.controller,
-                mods: {action: this.ctx.action},
-                data: this.ctx.data
+                elem: data.req.options.controller,
+                mods: {action: data.req.options.action},
+                data: data
             },
-            {block: 'footer'},
+            {
+                block: 'footer',
+                content: 'sails bem project stub 2015'
+            },
             {elem: 'js', url: '/views/desktop.bundles/merged/_merged.js'}
         ]
     });

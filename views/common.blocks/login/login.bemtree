@@ -1,10 +1,73 @@
-block('login')(
-    content()(function() {
-        return [
-            {
-                elem: 'name',
-                content: 'Имя пользователя'
-            }
-        ];
-    })
+block('login')
+    .def()(function() {
+        var data = this.ctx.data;
+
+        var providers = Object.keys(data.providers).map(function(provider) {
+            provider = data.providers[provider];
+
+            return {
+                block: 'login',
+                elem: 'provider',
+                content: {
+                    block: 'link',
+                    url: '/auth/' + provider.slug,
+                    content: provider.name
+                }
+            };
+        });
+
+        return applyCtx({
+            block: 'login',
+            content: [
+                // Enable on demand
+/*                {
+                    elem: 'local',
+                    content: [
+                        {
+                            elem: 'header',
+                            content: 'login'
+                        },
+                        {
+                            block: 'form',
+                            action: '/auth/local',
+                            method: 'post',
+                            data: this.ctx.data,
+                            content: [
+                                {
+                                    block: 'input',
+                                    mods: {theme: 'islands', size: 'm'},
+                                    name: 'identifier',
+                                    placeholder: 'username or email'
+                                },
+                                {
+                                    block: 'input',
+                                    mods: {theme: 'islands', size: 'm', type: 'password'},
+                                    name: 'password',
+                                    placeholder: 'password'
+                                },
+                                {
+                                    block: 'button',
+                                    mods: {theme: 'islands', size: 'm', type: 'submit'},
+                                    text: 'login'
+                                }
+                            ]
+                        }
+                    ]
+                },*/
+                {
+                    elem: 'other',
+                    content: [
+                        {
+                            elem: 'header',
+                            content: 'login with:'
+                        },
+                        {
+                            elem: 'providers',
+                            content: providers
+                        }
+                    ]
+                }
+            ]
+        });
+    }
 );
