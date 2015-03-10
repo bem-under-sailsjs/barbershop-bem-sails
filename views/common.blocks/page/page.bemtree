@@ -16,10 +16,24 @@ match(this.ctx.data)
                 mods: {theme: 'islands', size: 'm'}
             },
             {
-                block: 'controller',
-                elem: data.req.options.controller,
-                mods: {action: data.req.options.action},
-                data: data
+                block: 'content',
+                content: [
+                    {
+                        elem: 'column',
+                        mods: {position: 'left'},
+                        content: ''
+                    },
+                    {
+                        elem: 'column',
+                        mods: {position: 'right'},
+                        content: {
+                            block: 'controller',
+                            elem: data.req.options.controller,
+                            mods: {action: data.req.options.action},
+                            data: data
+                        }
+                    }
+                ]
             },
             {
                 block: 'footer',
