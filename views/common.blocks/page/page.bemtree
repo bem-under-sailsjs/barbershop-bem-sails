@@ -13,27 +13,7 @@ match(this.ctx.data)
             },
             {
                 block: 'menu',
-                mods: {theme: 'islands', size: 'm'},
-                content: [
-                    {
-                        block: 'menu-item',
-                        mods: {type: 'link'},
-                        content: {
-                            block: 'link',
-                            url: '/',
-                            content: 'Main'
-                        }
-                    },
-                    {
-                        block: 'menu-item',
-                        mods: {type: 'link'},
-                        content: {
-                            block: 'link',
-                            url: '/products/',
-                            content: 'Products'
-                        }
-                    }
-                ]
+                mods: {theme: 'islands', size: 'm'}
             },
             {
                 block: 'controller',

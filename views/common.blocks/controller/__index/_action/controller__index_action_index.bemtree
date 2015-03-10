@@ -1,9 +1,0 @@
-block('controller')
-    .elem('index')
-    .mod('action', 'index')
-    .def()(function() {
-        return applyCtx({
-            content: JSON.stringify(this.ctx.data)
-        });
-    }
-);

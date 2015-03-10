@@ -72,5 +72,8 @@ module.exports.routes = {
 
     // CSS and JS
     // TODO: add touch.pad & touch.phone bundles
-    'get /views/desktop.bundles/merged/:file': 'FileController.getStatic'
+    'get /views/desktop.bundles/merged/:file': 'FileController.getStatic',
+
+    // Design imgs
+    'get /img/:file': 'FileController.getStatic'
 };

@@ -11,11 +11,14 @@ module.exports = {
      * `IndexPageController.index()`
      */
     index: function(req, res) {
-        res.render({
-            data: {
-                title: 'Welcome to indexPage',
-                indexPage: 'indexPage content'
-            }
+        Product.find(function(err, products) {
+            res.render({
+                data: {
+                    products: products,
+                    title: 'Welcome to indexPage',
+                    indexPage: 'indexPage content'
+                }
+            });
         });
     }
 };

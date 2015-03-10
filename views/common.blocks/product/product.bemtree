@@ -5,7 +5,13 @@ block('product')(
             return [
                 {
                     elem: 'image',
-                    src: 'img/' + product.image
+                    content: product.image && ({
+                        block: 'image',
+                        width: '300px',
+                        url:  product.image,
+                        title: product.title,
+                        alt: product.title
+                    })
                 },
                 {
                     elem: 'title',

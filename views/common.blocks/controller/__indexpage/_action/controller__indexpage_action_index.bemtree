@@ -1,5 +1,5 @@
 block('controller')
-    .elem('product')
+    .elem('indexpage')
     .mod('action', 'index')
     .def()(function() {
         var data = this.ctx.data;

@@ -12,8 +12,6 @@ module.exports = {
      */
     index: function(req, res) {
         Product.find(function(err, products) {
-
-            // TODO: pass controller/action another way
             res.render({data: {products: products}});
         });
     },

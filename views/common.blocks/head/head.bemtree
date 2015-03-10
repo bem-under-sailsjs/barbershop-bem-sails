@@ -5,12 +5,33 @@ block('head')(
                 block: 'head',
                 content: [
                     {
-                        block: 'logo',
-                        content: 'site logo'
+                        elem: 'column',
+                        content: {
+                            block: 'logo'
+                        }
                     },
                     {
-                        block: 'user',
-                        data: this.ctx.data
+                        elem: 'column',
+                        content: [
+                            {
+                                block: 'site-name'
+                            }/*,
+                            {
+                                block: 'search'
+                            }*/
+                        ]
+                    },
+                    {
+                        elem: 'column',
+                        content: [
+                            {
+                                block: 'user',
+                                data: this.ctx.data
+                            },
+                            {
+                                block: 'cart'
+                            }
+                        ]
                     }
                 ]
             }

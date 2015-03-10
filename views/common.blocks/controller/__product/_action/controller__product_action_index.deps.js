@@ -1,7 +1,7 @@
 ({
     shouldDeps: [
         {
-            block: 'image'
+            block: 'product'
         }
     ]
 });
