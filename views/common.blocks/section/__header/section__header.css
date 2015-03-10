@@ -1,6 +1,7 @@
 .section__header
 {
-    color: #cc3333;
-    font-weight: bold;
     font-size: 28px;
+    font-weight: bold;
+
+    color: #c33;
 }

@@ -1,18 +1,24 @@
 .breadcrumb__item
 {
-    display: inline-block;
-    vertical-align: top;
-    color: #919091;
     font-size: 15px;
     font-style: italic;
+
+    display: inline-block;
+
+    vertical-align: top;
+
+    color: #919091;
 }
 
 .breadcrumb__item:after
 {
-    content: '--->>';
-    margin: 0 10px;
-    color: #9e9d9e;
     font-family: serif;
+
+    margin: 0 10px;
+
+    content: '--->>';
+
+    color: #9e9d9e;
 }
 
 .breadcrumb__item:last-child:after

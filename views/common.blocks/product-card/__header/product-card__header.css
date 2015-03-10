@@ -1,7 +1,9 @@
 .product-card__header
 {
-    color: #cc3333;
     font-size: 30px;
     font-weight: bold;
+
     margin: 0 0 40px 0;
+
+    color: #c33;
 }

@@ -1,7 +1,9 @@
 .catalog__item
 {
     display: inline-block;
-    vertical-align: top;
-    margin: 0 50px 60px 0;
+
     width: 140px;
+    margin: 0 50px 60px 0;
+
+    vertical-align: top;
 }

@@ -1,13 +1,14 @@
-.section__link
-{
-}
+
 
 .section__link:before
 {
-    content: '--->>';
-    margin: 0 10px;
-    color: #9e9d9e;
     font-family: serif;
+
+    margin: 0 10px;
+
+    content: '--->>';
+
+    color: #9e9d9e;
 }
 
 .section__link .link

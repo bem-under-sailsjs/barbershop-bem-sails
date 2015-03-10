@@ -1,7 +1,9 @@
 .product-card__price
 {
-    color: #6699cc;
-    font-weight: bold;
-    margin: 30px 0 0 0;
     font-size: 20px;
+    font-weight: bold;
+
+    margin: 30px 0 0 0;
+
+    color: #69c;
 }

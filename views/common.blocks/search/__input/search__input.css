@@ -1,6 +1,8 @@
 .search__input
 {
-    width: 630px;
     display: inline-block;
+
+    width: 630px;
+
     vertical-align: top;
 }

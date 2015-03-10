@@ -1,10 +1,11 @@
 .site-name__main
 {
-    color: #6699cc;
     font-size: 56px;
+
+    color: #69c;
 }
 
 .site-name__main > span
 {
-    color: #cc0000;
+    color: #c00;
 }

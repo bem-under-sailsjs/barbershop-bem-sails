@@ -1,10 +1,13 @@
 .content__header
 {
-    background: #cee0f5;
-    text-align: center;
-    color: #6699cc;
+    font-size: 14px;
     font-weight: bold;
+
     margin: 15px 0 0 0;
     padding: 10px 5px;
-    font-size: 14px;
+
+    text-align: center;
+
+    color: #69c;
+    background: #cee0f5;
 }
