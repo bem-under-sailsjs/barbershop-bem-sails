@@ -7,6 +7,7 @@
     color: #6699cc;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .button_type_buy:focus

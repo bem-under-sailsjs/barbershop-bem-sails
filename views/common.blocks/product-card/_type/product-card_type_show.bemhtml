@@ -1,6 +1,7 @@
 block('product-card').mod('type', 'show')(
     def()(function() {
-        var product = this.ctx.data.product;
+        var data = this.ctx.data,
+            product = data.product;
 
         applyCtx({
             block: 'product-card',
@@ -48,21 +49,27 @@ block('product-card').mod('type', 'show')(
                                 },
                                 {
                                     block: 'price',
-                                    mix: [{ block: 'product-card', elem: 'price' }],
+                                    mix: [{block: 'product-card', elem: 'price'}],
                                     value: product.price,
                                     currency: 'rub'
                                 },
                                 {
-                                    block: 'button',
-                                    mix: [{ block: 'product-card', elem: 'buy' }],
-                                    mods: {type: 'buy'},
-                                    content: 'Купить'
+                                    block: 'form',
+                                    data: data,
+                                    method: 'post',
+                                    action: '/product/' + product.id + '/add-to-cart/',
+                                    content: {
+                                        block: 'button',
+                                        mix: [{block: 'product-card', elem: 'buy'}],
+                                        mods: {type: 'buy'},
+                                        content: 'Купить'
+                                    }
                                 }
                             ]
                         },
                         {
                             elem: 'column',
-                            mods: { position: 'right' },
+                            mods: {position: 'right'},
                             content: [
                                 {
                                     elem: 'balance',

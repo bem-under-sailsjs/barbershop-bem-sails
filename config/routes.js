@@ -57,6 +57,7 @@ module.exports.routes = {
     'get /products/': 'ProductController.index',
     'get /product/new': 'ProductController.new',
     'post /product/create': 'ProductController.create',
+    'post /product/:id/add-to-cart': 'ProductController.addToCart',
     'get /product/:id': 'ProductController.show',
     'get /product/:id/edit': 'ProductController.edit',
     'post /product/:id/update': 'ProductController.update',

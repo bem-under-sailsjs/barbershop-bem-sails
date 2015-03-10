@@ -25,6 +25,17 @@ module.exports = {
         });
     },
 
+    addToCart: function(req, res, next) {
+
+        // find or create user cart
+
+        // Cart.add(req.param('id')): add cart product id to user Cart
+
+        console.log("req.param('id'): ", req.param('id'));
+
+        res.redirect('/product/' + req.param('id'));
+    },
+
     /**
      * `ProductController.create()`
      */

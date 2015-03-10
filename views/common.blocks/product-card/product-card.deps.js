@@ -27,6 +27,9 @@
             block: 'image'
         },
         {
+            block: 'form'
+        },
+        {
             block: 'button',
             mods: {type: 'buy'}
         }
