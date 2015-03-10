@@ -1,5 +1,4 @@
 block('product-card').mod('type', 'show')(
-
     def()(function() {
         var product = this.ctx.data.product;
 
@@ -7,21 +6,75 @@ block('product-card').mod('type', 'show')(
             block: 'product-card',
             content: [
                 {
-                    elem: 'title',
-                    content: product.title
+                    elem: 'header',
+                    content: product.header
                 },
-                product.image && ({
-                    elem: 'image',
-                    content: {
-                        block: 'image',
-                        url:  product.image,
-                        title: product.title,
-                        alt: product.title
-                    }
-                }),
                 {
-                    elem: 'price',
-                    content: product.price
+                    elem: 'columns',
+                    content: [
+                        {
+                            elem: 'column',
+                            mods: {position: 'left'},
+                            content: product.image && ({
+                                elem: 'image',
+                                content: {
+                                    block: 'image',
+                                    width: '300px',
+                                    url: product.image,
+                                    title: product.title,
+                                    alt: product.title
+                                }
+                            })
+                        },
+                        {
+                            elem: 'column',
+                            mods: {position: 'center'},
+                            content: [
+                                {
+                                    elem: 'theme',
+                                    content: product.theme
+                                },
+                                {
+                                    elem: 'annotation',
+                                    content: product.annotation
+                                },
+                                {
+                                    elem: 'content',
+                                    content: product.content
+                                },
+                                {
+                                    elem: 'isbn',
+                                    content: product.isbn
+                                },
+                                {
+                                    block: 'price',
+                                    mix: [{ block: 'product-card', elem: 'price' }],
+                                    value: product.price,
+                                    currency: 'rub'
+                                },
+                                {
+                                    block: 'button',
+                                    mix: [{ block: 'product-card', elem: 'buy' }],
+                                    mods: {type: 'buy'},
+                                    content: 'Купить'
+                                }
+                            ]
+                        },
+                        {
+                            elem: 'column',
+                            mods: { position: 'right' },
+                            content: [
+                                {
+                                    elem: 'balance',
+                                    content: 'Наличие журнала в бумажном варианте'
+                                },
+                                {
+                                    elem: 'e-buy-info',
+                                    content: 'Купить в электронном варианте'
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         });
