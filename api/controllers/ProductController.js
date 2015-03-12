@@ -26,7 +26,8 @@ module.exports = {
     },
 
     addToCart: function(req, res, next) {
-        Cart.add(req.param('id'), req, function() {
+        Cart.add(req.param('id'), req, function(data) {
+            console.log("addToCart data: ", data);
             res.redirect('/product/' + req.param('id'));
         });
     },

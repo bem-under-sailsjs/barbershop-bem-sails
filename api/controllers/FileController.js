@@ -67,9 +67,6 @@ module.exports = {
         if (file === 'undefined') return next();
 
         var filePath = path.resolve(__dirname, sails.config.fileUpload.staticDir, file);
-
-        console.log("filePath: ", filePath);
-
         var readStream = fs.createReadStream(filePath);
 
         readStream.pipe(res);

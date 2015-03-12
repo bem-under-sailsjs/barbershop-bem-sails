@@ -11,12 +11,13 @@ module.exports = {
 
     attributes: {
         user: 'id',
-        products: 'array'
+        sessionCartID: 'String', // TODO: set unique
+        items: 'object' // {productID_1: quantity_1, productID_2: quantity_2}
     },
 
     beforeValidate: function(values, next) {
         // don't save _csrf token in database
-        if(values._csrf) delete values._csrf;
+        if (values._csrf) delete values._csrf;
         next();
     },
 
@@ -30,38 +31,44 @@ module.exports = {
         // find or create user cart
         var user = req.session.User;
 
-        if(!user && !req.session.sessionCartID) {
-            // generate random UUID and save to session
-            req.session.sessionCartID = uuid.v4();
-            req.session.save();
+        // Session hasnt Cart
+        if (!user) {
 
-            var data = {
-                sessionCartID: req.session.sessionCartID,
-                productID: productID
-            };
+            if (!req.session.sessionCartID) {
+                console.log("NEW req.session.sessionCartID: ", req.session.sessionCartID);
+                // generate random UUID and save to session
+                req.session.sessionCartID = uuid.v4();
+                req.session.save();
+            }
 
-            Cart.create(data, function(err, cart) {
-                if(err) {
-                    res.redirect('/product/' + productID);
-                }
+            console.log("req.session.sessionCartID: ", req.session.sessionCartID);
 
-                console.log('created cart: ', cart);
+            var data = {'$inc': {}};
+            data['$inc']['items.ProductID_' + productID] = 1;
 
+            Cart.find({sessionCartID: req.session.sessionCartID}, function(err, data) {
+                console.log("find data: ", data);
             });
-        } else if (req.session.sessionCartID) {
-                Cart.update({
-                    sessionCartID: req.session.sessionCartID,
-                    productID: productID
-                }, function(err, cart) {
 
+            // UPDATE
+            Cart.update(
+                // query
+                {sessionCartID: req.session.sessionCartID},
 
-                console.log("updated cart: ", cart);
-            });
+                // data
+                data,
+
+                // options
+                {
+                    'upsert': true
+                },
+                function(err, cart) {
+                    if (err) {res.redirect('/product/' + productID);}
+
+                    callback(cart);
+                });
+
         }
-
-
-        callback();
-
     }
 };
 
