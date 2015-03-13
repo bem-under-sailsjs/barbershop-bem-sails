@@ -12,7 +12,7 @@ module.exports = {
     attributes: {
         user: 'id',
         sessionCartID: 'String', // TODO: set unique
-        items: 'object' // {productID_1: quantity_1, productID_2: quantity_2}
+        items: 'array' // [{ productID: productID, quantity: value }]
     },
 
     beforeValidate: function(values, next) {
@@ -24,10 +24,9 @@ module.exports = {
     /**
      * Add product to cart
      *
-     * @param {String} productID
+     * @param {Object} data
      */
-    add: function(productID, req, callback) {
-
+    add: function(data, req, callback) {
         // find or create user cart
         var user = req.session.User;
 
@@ -41,31 +40,54 @@ module.exports = {
                 req.session.save();
             }
 
-            console.log("req.session.sessionCartID: ", req.session.sessionCartID);
-
-            var data = {'$inc': {}};
-            data['$inc']['items.ProductID_' + productID] = 1;
-
-            Cart.find({sessionCartID: req.session.sessionCartID}, function(err, data) {
-                console.log("find data: ", data);
-            });
-
-            // UPDATE
-            Cart.update(
-                // query
-                {sessionCartID: req.session.sessionCartID},
-
-                // data
-                data,
-
-                // options
-                {
-                    'upsert': true
-                },
+            // TODO: rewrite!
+            Cart.findOne({sessionCartID: req.session.sessionCartID},
                 function(err, cart) {
-                    if (err) {res.redirect('/product/' + productID);}
+                    if (err) {
+                        console.log("err: ", err);
+                    }
 
-                    callback(cart);
+                    var isAlreadyInCart = false;
+
+                    if (cart) {
+
+                        if (cart.items.length > 0) {
+
+                            // Check if product already present in cart
+                            cart.items.forEach(function(item, index) {
+                                if (cart.items[index].productID === data.productID) {
+                                    cart.items[index].quantity = data.quantity + cart.items[index].quantity;
+                                    isAlreadyInCart = true;
+                                }
+                            });
+                        }
+
+                        if (!isAlreadyInCart) {
+                            cart.items.push(data);
+                        }
+
+                        Cart.update(
+                            {sessionCartID: req.session.sessionCartID},
+                            {
+                                items: cart.items
+                            },
+                            function() {
+                                console.log("err: ", err);
+                                callback(cart);
+                            });
+
+                    } else {
+
+                        Cart.create({
+                                sessionCartID: req.session.sessionCartID,
+                                items: [data]
+                            },
+                            function(err, cart) {
+                                console.log("err: ", err);
+                                callback(cart);
+                            });
+
+                    }
                 });
 
         }

@@ -25,9 +25,11 @@ module.exports = {
         });
     },
 
-    addToCart: function(req, res, next) {
-        Cart.add(req.param('id'), req, function(data) {
-            console.log("addToCart data: ", data);
+    addToCart: function(req, res) {
+        Cart.add(
+            {productID: req.param('id'), quantity: 1}, // one product
+            req,
+            function(data) {
             res.redirect('/product/' + req.param('id'));
         });
     },
