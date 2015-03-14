@@ -1,5 +1,5 @@
-block('cart')(
-    
+block('cart-info')(
+
     elem('count').content()(
         function() {
             var value = this.ctx.value;
@@ -19,9 +19,9 @@ block('cart')(
                             // 1 or N01 or N11
                             return 0;
                         } else if (
-                            value % 10 >= 2 && 
-                            value % 10 <= 4 && 
-                           (value % 100 < 10 || 
+                            value % 10 >= 2 &&
+                            value % 10 <= 4 &&
+                           (value % 100 < 10 ||
                             value % 100 >= 20)) {
                             return 1;
                         } else {

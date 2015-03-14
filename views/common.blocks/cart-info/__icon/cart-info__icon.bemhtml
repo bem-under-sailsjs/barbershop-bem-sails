@@ -1,4 +1,4 @@
-block('cart')(
+block('cart-info')(
     elem('icon')(
         content()(function() {
             return {
