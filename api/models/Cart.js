@@ -30,26 +30,32 @@ module.exports = {
         // find or create user cart
         var user = req.session.User;
 
-        // Session hasnt Cart
+        // Session hasn't Cart
         if (!user) {
 
             if (!req.session.sessionCartID) {
-                console.log("NEW req.session.sessionCartID: ", req.session.sessionCartID);
-                // generate random UUID and save to session
-                req.session.sessionCartID = uuid.v4();
-                req.session.save();
-            }
 
-            // TODO: rewrite!
-            Cart.findOne({sessionCartID: req.session.sessionCartID},
-                function(err, cart) {
-                    if (err) {
-                        console.log("err: ", err);
-                    }
+                Cart.create({items: [data]}, function(err, cart) {
+                        if (err) {callback(err);}
 
-                    var isAlreadyInCart = false;
+                        req.session.sessionCartID = cart.id;
+                        req.session.save();
 
-                    if (cart) {
+                        callback(cart);
+                    });
+
+            } else {
+                // TODO: rewrite!
+                Cart.findOne({id: req.session.sessionCartID}, function(err, cart) {
+                        if (err) {callback(err);}
+
+                    if(!cart) {
+                        req.session.sessionCartID = null;
+                        req.session.save();
+                        this.add(data, req, callback);
+
+                    } else {
+                        var isAlreadyInCart = false;
 
                         if (cart.items.length > 0) {
 
@@ -67,7 +73,7 @@ module.exports = {
                         }
 
                         Cart.update(
-                            {sessionCartID: req.session.sessionCartID},
+                            {id: req.session.sessionCartID},
                             {
                                 items: cart.items
                             },
@@ -76,19 +82,10 @@ module.exports = {
                                 callback(cart);
                             });
 
-                    } else {
-
-                        Cart.create({
-                                sessionCartID: req.session.sessionCartID,
-                                items: [data]
-                            },
-                            function(err, cart) {
-                                console.log("err: ", err);
-                                callback(cart);
-                            });
-
                     }
-                });
+
+                }.bind(this));
+            }
 
         }
     }
