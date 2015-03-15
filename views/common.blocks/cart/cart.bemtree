@@ -1,24 +1,74 @@
 block('cart')(
     def()(function() {
         var cart = this.ctx.data.cart,
-            content = [];
+            items = [];
 
         cart.items.forEach(function(item, index) {
-            content.push({
+            items.push({
                 elem: 'item',
+                tag: 'tr',
                 content: [
                     {
                         elem: 'product',
+                        tag: 'td',
                         content: item.productID
                     },
                     {
+                        elem: 'price',
+                        tag: 'td',
+                        content: item.price
+                    },
+                    {
                         elem: 'quantity',
+                        tag: 'td',
                         content: item.quantity
+                    },
+                    {
+                        elem: 'summary',
+                        tag: 'td',
+                        content: '101' /*item.price * item.quantity*/
                     }
                 ]
             });
         });
 
-        return applyCtx({block: 'cart', content: content});
+        return applyCtx({
+            block: 'cart',
+            tag: 'table',
+            content: [
+                {
+                    elem: 'head',
+                    tag: 'thead',
+                    content: [
+                        {
+                            tag: 'tr',
+                            content: [
+                                {
+                                    tag: 'th',
+                                    content: 'Наименование товара'
+                                },
+                                {
+                                    tag: 'th',
+                                    content: 'Цена'
+                                },
+                                {
+                                    tag: 'th',
+                                    content: 'Количество'
+                                },
+                                {
+                                    tag: 'th',
+                                    content: 'Итого'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    elem: 'items',
+                    tag: 'tbody',
+                    content: items
+                }
+            ]
+        });
     })
 );
