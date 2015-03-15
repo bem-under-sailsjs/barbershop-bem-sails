@@ -11,8 +11,11 @@ module.exports = {
 
     attributes: {
         user: 'id',
-        sessionCartID: 'String', // TODO: set unique
-        items: 'array' // [{ productID: productID, quantity: value }]
+        items: 'array', // [{ productID: productID, quantity: value }]
+        quantity: {
+            type: 'integer',
+            defaultsTo: 0
+        }
     },
 
     beforeValidate: function(values, next) {
@@ -33,24 +36,14 @@ module.exports = {
         // Session hasn't Cart
         if (!user) {
 
-            if (!req.session.sessionCartID) {
+            if (req.session.cart && req.session.cart.id) {
 
-                Cart.create({items: [data]}, function(err, cart) {
-                        if (err) {callback(err);}
-
-                        req.session.sessionCartID = cart.id;
-                        req.session.save();
-
-                        callback(cart);
-                    });
-
-            } else {
                 // TODO: rewrite!
-                Cart.findOne({id: req.session.sessionCartID}, function(err, cart) {
-                        if (err) {callback(err);}
+                Cart.findOne({id: req.session.cart.id}, function(err, cart) {
+                    if (err) {callback(err);}
 
                     if(!cart) {
-                        req.session.sessionCartID = null;
+                        req.session.cart.id = null;
                         req.session.save();
                         this.add(data, req, callback);
 
@@ -72,19 +65,37 @@ module.exports = {
                             cart.items.push(data);
                         }
 
+                        cart.quantity = cart.quantity + data.quantity;
+
                         Cart.update(
-                            {id: req.session.sessionCartID},
+                            {id: req.session.cart.id},
                             {
-                                items: cart.items
+                                items: cart.items,
+                                quantity: cart.quantity
                             },
                             function() {
                                 console.log("err: ", err);
+
+                                req.session.cart = cart;
+                                req.session.save();
+
                                 callback(cart);
                             });
 
                     }
 
                 }.bind(this));
+
+            } else {
+
+                Cart.create({items: [data], quantity: data.quantity}, function(err, cart) {
+                    if (err) {callback(err);}
+
+                    req.session.cart = cart;
+                    req.session.save();
+
+                    callback(cart);
+                });
             }
 
         }

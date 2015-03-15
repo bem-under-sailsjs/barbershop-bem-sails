@@ -19,7 +19,7 @@
             block: 'user'
         },
         {
-            block: 'cart'
+            block: 'cart-info'
         }
     ]
 });

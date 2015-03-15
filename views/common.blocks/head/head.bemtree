@@ -29,7 +29,8 @@ block('head')(
                                 data: this.ctx.data
                             },
                             {
-                                block: 'cart'
+                                block: 'cart-info',
+                                data: this.ctx.data
                             }
                         ]
                     }

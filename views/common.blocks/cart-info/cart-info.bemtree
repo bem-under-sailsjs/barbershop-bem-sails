@@ -1,5 +1,6 @@
 block('cart-info')(
     content()(function() {
+        var cart = this.ctx.data.req.session.cart;
         return [
             {
                 elem: 'info',
@@ -7,7 +8,7 @@ block('cart-info')(
                     'В вашей корзине ',
                     {
                         elem: 'count',
-                        value: 0,
+                        value: cart && cart.quantity,
                         pluralize: ['товар', 'товара', 'товаров']
                     }
                 ]
@@ -17,7 +18,8 @@ block('cart-info')(
             },
             {
                 elem: 'order',
-                content: 'Оформить заказ'
+                content: 'Оформить заказ',
+                url: '/cart/'
             }
         ];
     })
