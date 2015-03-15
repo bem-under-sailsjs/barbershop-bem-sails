@@ -11,7 +11,18 @@ block('cart')(
                     {
                         elem: 'product',
                         tag: 'td',
-                        content: item.productID
+                        content: [
+                            {
+                                block: 'image',
+                                width: '100px',
+                                url: item.image,
+                                title: item.title,
+                                alt: item.title
+                            },
+                            {
+                                content: item.header + ' / ' +  item.theme
+                            }
+                        ]
                     },
                     {
                         elem: 'price',
@@ -26,7 +37,7 @@ block('cart')(
                     {
                         elem: 'summary',
                         tag: 'td',
-                        content: '101' /*item.price * item.quantity*/
+                        content: item.price * item.quantity
                     }
                 ]
             });

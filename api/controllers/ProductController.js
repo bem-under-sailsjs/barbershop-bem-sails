@@ -26,11 +26,25 @@ module.exports = {
     },
 
     addToCart: function(req, res) {
-        Cart.add(
-            {productID: req.param('id'), quantity: 1}, // one product
-            req,
-            function(data) {
-            res.redirect('/product/' + req.param('id'));
+
+        Product.findOne(req.param('id'), function(err, product) {
+            if (err) console.log(err);
+
+            Cart.add(
+                {
+                    productID: product.id,
+                    quantity: 1, // one product`
+                    price: product.price,
+                    image: product.image,
+                    header: product.header,
+                    theme: product.theme,
+                    title: product.title
+                },
+                req,
+                function(data) {
+                    res.redirect('/product/' + req.param('id'));
+                });
+
         });
     },
 
