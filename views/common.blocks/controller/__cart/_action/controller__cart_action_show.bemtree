@@ -1,0 +1,10 @@
+block('controller')
+    .elem('cart')
+    .mod('action', 'show')
+    .def()(function() {
+    return applyCtx({
+        block: 'cart',
+        mods: {type: 'show'},
+        data: this.ctx.data
+    });
+});

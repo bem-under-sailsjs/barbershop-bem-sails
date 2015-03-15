@@ -1,0 +1,24 @@
+block('cart')(
+    def()(function() {
+        var cart = this.ctx.data.cart,
+            content = [];
+
+        cart.items.forEach(function(item, index) {
+            content.push({
+                elem: 'item',
+                content: [
+                    {
+                        elem: 'product',
+                        content: item.productID
+                    },
+                    {
+                        elem: 'quantity',
+                        content: item.quantity
+                    }
+                ]
+            });
+        });
+
+        return applyCtx({block: 'cart', content: content});
+    })
+);

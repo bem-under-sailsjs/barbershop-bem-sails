@@ -63,6 +63,9 @@ module.exports.routes = {
     'post /product/:id/update': 'ProductController.update',
     'post /product/:id/delete': 'ProductController.delete',
 
+    // Cart
+    'get /cart/': 'CartController.show',
+
     // Users
     'get /user/:id': 'UserController.show',
     'get /user/:id/edit': 'UserController.edit',
