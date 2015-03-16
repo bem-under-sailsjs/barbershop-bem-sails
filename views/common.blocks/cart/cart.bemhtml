@@ -1,0 +1,19 @@
+block('cart')(
+    tag()('table'),
+
+    elem('item')(
+        tag()('tr')
+    ),
+    elem('property')(
+        tag()('td')
+    ),
+    elem('head')(
+        tag()('thead')
+    ),
+    elem('items')(
+        tag()('tbody')
+    ),
+    elem('footer')(
+        tag()('tfoot')
+    )
+);

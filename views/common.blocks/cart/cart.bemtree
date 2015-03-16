@@ -6,11 +6,9 @@ block('cart')(
         cart.items.forEach(function(item, index) {
             items.push({
                 elem: 'item',
-                tag: 'tr',
                 content: [
                     {
-                        elem: 'product',
-                        tag: 'td',
+                        elem: 'property',
                         content: [
                             {
                                 block: 'image',
@@ -25,18 +23,15 @@ block('cart')(
                         ]
                     },
                     {
-                        elem: 'price',
-                        tag: 'td',
+                        elem: 'property',
                         content: item.price
                     },
                     {
-                        elem: 'quantity',
-                        tag: 'td',
+                        elem: 'property',
                         content: item.quantity
                     },
                     {
-                        elem: 'summary',
-                        tag: 'td',
+                        elem: 'property',
                         content: item.price * item.quantity
                     }
                 ]
@@ -45,11 +40,9 @@ block('cart')(
 
         return applyCtx({
             block: 'cart',
-            tag: 'table',
             content: [
                 {
                     elem: 'head',
-                    tag: 'thead',
                     content: [
                         {
                             tag: 'tr',
@@ -76,7 +69,6 @@ block('cart')(
                 },
                 {
                     elem: 'items',
-                    tag: 'tbody',
                     content: items
                 }
             ]
