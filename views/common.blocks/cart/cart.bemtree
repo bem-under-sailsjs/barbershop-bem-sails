@@ -1,6 +1,7 @@
 block('cart')(
     def()(function() {
-        var cart = this.ctx.data.cart,
+        var data = this.ctx.data,
+            cart = data.cart,
             items = [];
 
         cart.items.forEach(function(item, index) {
@@ -18,7 +19,7 @@ block('cart')(
                                 alt: item.title
                             },
                             {
-                                content: item.header + ' / ' +  item.theme
+                                content: item.header + ' / ' + item.theme
                             }
                         ]
                     },
@@ -38,40 +39,47 @@ block('cart')(
             });
         });
 
-        return applyCtx({
-            block: 'cart',
-            content: [
-                {
-                    elem: 'head',
-                    content: [
-                        {
-                            tag: 'tr',
-                            content: [
-                                {
-                                    tag: 'th',
-                                    content: 'Наименование товара'
-                                },
-                                {
-                                    tag: 'th',
-                                    content: 'Цена'
-                                },
-                                {
-                                    tag: 'th',
-                                    content: 'Количество'
-                                },
-                                {
-                                    tag: 'th',
-                                    content: 'Итого'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    elem: 'items',
-                    content: items
-                }
-            ]
-        });
+        return applyCtx([
+            {
+                block: 'cart',
+                content: [
+                    {
+                        elem: 'head',
+                        content: [
+                            {
+                                tag: 'tr',
+                                content: [
+                                    {
+                                        tag: 'th',
+                                        content: 'Наименование товара'
+                                    },
+                                    {
+                                        tag: 'th',
+                                        content: 'Цена'
+                                    },
+                                    {
+                                        tag: 'th',
+                                        content: 'Количество'
+                                    },
+                                    {
+                                        tag: 'th',
+                                        content: 'Итого'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'items',
+                        content: items
+                    }
+                ]
+            },
+            {
+                block: 'order-form',
+                data: data,
+                cart: cart
+            }
+        ]);
     })
 );
