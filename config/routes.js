@@ -66,6 +66,9 @@ module.exports.routes = {
     // Cart
     'get /cart/': 'CartController.show',
 
+    // Order
+    'post /order/:cartID/create': 'OrderController.create',
+
     // Users
     'get /user/:id': 'UserController.show',
     'get /user/:id/edit': 'UserController.edit',

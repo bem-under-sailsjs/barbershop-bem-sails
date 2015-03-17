@@ -2,7 +2,7 @@ block('order-form')(
     content()(function() {
         return {
             block: 'form',
-            action: '/order/?cart=' + this.ctx.cart.id,
+            action: '/order/' + this.ctx.cart.id + '/create/',
             method: 'post',
             data: this.ctx.data,
             content: [
