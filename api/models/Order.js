@@ -17,11 +17,17 @@ module.exports = {
         comment: 'string',
         cartID: 'string',
         userID: 'string',
-        status: 'string',
-        number: {
-            defaultsTo: 0,
-            autoIncrement: true
+        status: {
+            type: 'string',
+            enum: ['new', 'progressing', 'paid', 'delivering', 'delivered', 'canceled'],
+            defaultsTo: 'new'
         }
+        /* TODO: fix increment
+        number: {
+            type: 'integer',
+            defaultsTo: 1,
+            autoIncrement: true
+        }*/
     },
 
     beforeValidate: function(values, next) {

@@ -14,6 +14,8 @@ module.exports = {
         Order.create(req.params.all(), function(err, order) {
             if (err) console.log(err);
 
+            // Mail to manager and customer
+
             res.redirect('/order/' + order.id);
         });
     },
@@ -24,8 +26,6 @@ module.exports = {
     show: function(req, res) {
         Order.findOne(req.param('id'), function(err, order) {
             if (err) console.log(err);
-
-            console.log('order: ', order);
 
             res.render({data: {order: order}});
         });

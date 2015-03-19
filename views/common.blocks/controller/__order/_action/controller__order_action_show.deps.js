@@ -1,4 +1,5 @@
 ({
-    mustDeps: [],
-    shouldDeps: []
-})
+    shouldDeps: [
+        {block: 'order-card'}
+    ]
+});
