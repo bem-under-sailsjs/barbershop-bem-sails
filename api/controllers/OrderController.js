@@ -7,13 +7,28 @@
 
 module.exports = {
 
-  /**
-   * `OrderController.create()`
-   */
-  create: function (req, res, next) {
-      console.log('params: ', req.params);
+    /**
+     * `OrderController.create()`
+     */
+    create: function(req, res) {
+        Order.create(req.params.all(), function(err, order) {
+            if (err) console.log(err);
 
-      next();
-  }
+            res.redirect('/order/' + order.id);
+        });
+    },
+
+    /**
+     * `OrderController.show()`
+     */
+    show: function(req, res) {
+        Order.findOne(req.param('id'), function(err, order) {
+            if (err) console.log(err);
+
+            console.log('order: ', order);
+
+            res.render({data: {order: order}});
+        });
+    }
 };
 

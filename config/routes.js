@@ -67,7 +67,9 @@ module.exports.routes = {
     'get /cart/': 'CartController.show',
 
     // Order
-    'post /order/:cartID/create': 'OrderController.create',
+    // TODO: refactor
+    'post /order/cart/:cartID': 'OrderController.create',
+    'get /order/:id': 'OrderController.show',
 
     // Users
     'get /user/:id': 'UserController.show',
