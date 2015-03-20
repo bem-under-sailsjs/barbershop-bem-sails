@@ -1,0 +1,24 @@
+block('order-card')(
+    content()(function() {
+        var data = this.ctx.data,
+            order = data.order;
+
+        return Object.keys(order).map(function(property) {
+            return {
+                elem: 'item',
+                content: [
+                    {
+                        elem: 'property-name',
+                        tag: 'span',
+                        content: property
+                    },
+                    {
+                        elem: 'property-value',
+                        tag: 'span',
+                        content: order[property]
+                    }
+                ]
+            };
+        });
+    })
+);

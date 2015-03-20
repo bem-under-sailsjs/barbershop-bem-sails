@@ -3,34 +3,14 @@ block('controller')
     .mod('action', 'show')
     .def()(function() {
 
-        var order = this.ctx.data.order;
-
         return applyCtx([
             {
                 attrs: {style: 'color: #c00; margin: 15px 0 25px 0; font-size: 26px; font-weight: bold;'},
                 content: 'Ваш заказ'
             },
             {
-                content: {
-                    block: 'order-card',
-                    content: Object.keys(order).map(function(property, index) {
-                        return {
-                            elem: 'item',
-                            content: [
-                                {
-                                    elem: 'property-name',
-                                    tag: 'span',
-                                    content: property
-                                },
-                                {
-                                    elem: 'property-value',
-                                    tag: 'span',
-                                    content: order[property]
-                                }
-                            ]
-                        };
-                    })
-                }
+                block: 'order-card',
+                data: this.ctx.data
             },
             {
                 content: 'Спасибо за заказ! Он будет доставлен как можно скорее!'
