@@ -1,0 +1,11 @@
+.product__price
+{
+    font-size: 20px;
+    font-weight: bold;
+
+    margin: 0 0 15px 0;
+
+    text-align: right;
+
+    color: #69c;
+}

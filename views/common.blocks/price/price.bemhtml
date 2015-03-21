@@ -1,0 +1,22 @@
+block('price')(
+    content()(function() {
+        var value = {
+                elem: 'value',
+                tag: 'span',
+                content: this.ctx.value
+            },
+            currency = {
+                elem: 'currency',
+                currency: this.ctx.currency
+            };
+
+        if (this.ctx.currency === 'rub') {
+            return [value, currency];
+        }
+
+        if (this.ctx.currency === 'usd') {
+            return [currency, value];
+        }
+
+    })
+);

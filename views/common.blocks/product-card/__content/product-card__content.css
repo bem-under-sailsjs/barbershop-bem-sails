@@ -1,0 +1,14 @@
+.product-card__content
+{
+    margin: 0 0 25px 0;
+}
+
+.product-card__content .product-card__property-header
+{
+    display: block;
+}
+
+.product-card__content .product-card__property-content
+{
+    display: block;
+}

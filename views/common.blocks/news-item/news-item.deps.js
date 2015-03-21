@@ -1,0 +1,7 @@
+({
+    shouldDeps: [
+        {
+            elems: ['date', 'content']
+        }
+    ]
+});

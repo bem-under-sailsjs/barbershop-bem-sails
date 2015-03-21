@@ -12,9 +12,6 @@
  * Finally, if those don't match either, the default 404 handler is triggered.
  * See `api/responses/notFound.js` to adjust your app's 404 logic.
  *
- * Note: Sails doesn't ACTUALLY serve stuff from `assets`-- the default Gruntfile in Sails copies
- * flat files from `assets` to `.tmp/public`.  This allows you to do things like compile LESS or
- * CoffeeScript for the front-end.
  *
  * For more information on configuring custom routes, check out:
  * http://sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html
@@ -60,10 +57,19 @@ module.exports.routes = {
     'get /products/': 'ProductController.index',
     'get /product/new': 'ProductController.new',
     'post /product/create': 'ProductController.create',
+    'post /product/:id/add-to-cart': 'ProductController.addToCart',
     'get /product/:id': 'ProductController.show',
     'get /product/:id/edit': 'ProductController.edit',
     'post /product/:id/update': 'ProductController.update',
     'post /product/:id/delete': 'ProductController.delete',
+
+    // Cart
+    'get /cart/': 'CartController.show',
+
+    // Order
+    // TODO: refactor
+    'post /order/cart/:cartID': 'OrderController.create',
+    'get /order/:id': 'OrderController.show',
 
     // Users
     'get /user/:id': 'UserController.show',
@@ -71,5 +77,12 @@ module.exports.routes = {
     'post /user/:id/update': 'UserController.update',
 
     // Files
-    'get /uploads/:id': 'FileController.download'
+    'get /uploads/:id': 'FileController.download',
+
+    // CSS and JS
+    // TODO: add touch.pad & touch.phone bundles
+    'get /views/desktop.bundles/merged/:file': 'FileController.getStatic',
+
+    // Design imgs
+    'get /img/:file': 'FileController.getStatic'
 };

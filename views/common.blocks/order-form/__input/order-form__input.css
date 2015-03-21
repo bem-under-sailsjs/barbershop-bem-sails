@@ -1,0 +1,15 @@
+.order-form__input
+{
+    display: inline-block;
+
+    width: 440px;
+    margin: 0 0 20px 0;
+
+    vertical-align: top;
+}
+
+.order-form__input .input,
+.order-form__input .textarea
+{
+    width: 100%;
+}

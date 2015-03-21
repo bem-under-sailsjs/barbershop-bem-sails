@@ -1,0 +1,8 @@
+({
+
+    shouldDeps: [
+        {
+            elems: ['header', 'content']
+        }
+    ]
+});

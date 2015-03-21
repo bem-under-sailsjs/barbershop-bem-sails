@@ -1,0 +1,5 @@
+({
+    shouldDeps: [
+        {block: 'order-card'}
+    ]
+});

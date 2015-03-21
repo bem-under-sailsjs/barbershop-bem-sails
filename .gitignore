@@ -119,3 +119,16 @@ nbproject
 
 # content
 uploads
+
+
+################################################
+# BEM frontend
+#
+################################################
+
+views/.enb/tmp/
+views/libs/
+views/*bundles*/merged/
+views/*.bundles/*/*.*
+views/*.bundles/*/*.*.*
+!views/*bundles*/*/*.bemdecl.js

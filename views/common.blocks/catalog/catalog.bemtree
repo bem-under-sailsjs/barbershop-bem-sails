@@ -1,0 +1,8 @@
+block('catalog')
+    .def()(function() {
+        return applyCtx({
+            block: 'section',
+            data: this.ctx.data
+        });
+    }
+);

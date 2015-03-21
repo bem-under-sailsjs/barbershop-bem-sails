@@ -1,0 +1,17 @@
+
+
+.section__link:before
+{
+    font-family: serif;
+
+    margin: 0 10px;
+
+    content: '--->>';
+
+    color: #9e9d9e;
+}
+
+.section__link .link
+{
+    color: #9e9d9e;
+}

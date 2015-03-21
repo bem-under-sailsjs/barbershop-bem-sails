@@ -1,0 +1,19 @@
+block('product-card')(
+
+    elem('content')(
+        content()(function() {
+            return [
+                {
+                    elem: 'property-header',
+                    tag: 'div',
+                    content: 'Содержание: '
+                },
+                {
+                    elem: 'property-content',
+                    tag: 'div',
+                    content: this.ctx.content
+                }
+            ];
+        })
+    )
+);

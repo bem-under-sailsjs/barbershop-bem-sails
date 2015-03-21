@@ -28,11 +28,11 @@ module.exports.policies = {
 
     '*': ['passport'],
 
-    ProductController: {
+/*    ProductController: {
         '*': ['passport', 'isAdmin'],
         show: 'passport',
         index: 'passport'
-    },
+    },*/
 
     UserController: {
         '*': ['passport', 'isAdmin'],

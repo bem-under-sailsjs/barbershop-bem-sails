@@ -1,0 +1,11 @@
+.product-card
+{
+    font-size: 14px;
+
+    color: #656464;
+}
+
+.product-card .product-card__property-header
+{
+    font-weight: bold;
+}

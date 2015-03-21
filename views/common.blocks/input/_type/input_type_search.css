@@ -1,0 +1,17 @@
+
+
+.input_type_search .input__control
+{
+    font-size: 16px;
+
+    display: inline-block;
+
+    width: 630px;
+    padding: 10px 5px;
+
+    border: 0;
+    outline: none;
+    background: #f0f0f0;
+
+    -webkit-appearance: none;
+}

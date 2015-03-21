@@ -1,0 +1,28 @@
+block('search')(
+    content()(
+        function() {
+            return [
+                {
+                    elem: 'input',
+                    content: {
+                        block: 'input',
+                        mods: { type: 'search' },
+                        placeholder: 'Введите запрос'
+                    }
+                },
+                {
+                    elem: 'button',
+                    content: {
+                        block: 'button',
+                        mods: { type: 'search' },
+                        content: 'Найти'
+                    }
+                },
+                {
+                    elem: 'title',
+                    content: 'Поиск по сайту'
+                }
+            ];
+        }
+    )
+);

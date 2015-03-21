@@ -1,0 +1,34 @@
+block('menu')(
+    content()(function() {
+            return {
+                elem: 'items',
+                content: [
+                    {
+                        elem: 'item',
+                        content: 'Об издательстве',
+                        url: '/about/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Как оформить заказ',
+                        url: '/how-to-order/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Доставка и оплата',
+                        url: '/delivery/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Предзаказ',
+                        url: '/reservation/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'Контакты',
+                        url: '/contacts/'
+                    }
+                ]
+            };
+        }
+    ));

@@ -1,0 +1,17 @@
+block('product-card')(
+
+    elem('annotation')(
+        content()(function() {
+            return [
+                {
+                    elem: 'property-header',
+                    content: 'Аннотация: '
+                },
+                {
+                    elem: 'property-content',
+                    content: this.ctx.content
+                }
+            ];
+        })
+    )
+);

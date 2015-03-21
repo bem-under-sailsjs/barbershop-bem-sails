@@ -1,0 +1,16 @@
+block('controller')
+    .elem('cart')
+    .mod('action', 'show')
+    .def()(function() {
+    return applyCtx([
+        {
+            attrs: { style: 'color: #c00; margin: 15px 0 25px 0; font-size: 26px; font-weight: bold;' },
+            content: 'Ваша корзина'
+        },
+        {
+            block: 'cart',
+            mods: {type: 'show'},
+            data: this.ctx.data
+        }
+    ]);
+});

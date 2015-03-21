@@ -1,0 +1,41 @@
+block('head')(
+    def()(function() {
+        return applyCtx([
+            {
+                block: 'head',
+                content: [
+                    {
+                        elem: 'column',
+                        content: {
+                            block: 'logo'
+                        }
+                    },
+                    {
+                        elem: 'column',
+                        content: [
+                            {
+                                block: 'site-name'
+                            }/*,
+                            {
+                                block: 'search'
+                            }*/
+                        ]
+                    },
+                    {
+                        elem: 'column',
+                        content: [
+                            {
+                                block: 'user',
+                                data: this.ctx.data
+                            },
+                            {
+                                block: 'cart-info',
+                                data: this.ctx.data
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]);
+    })
+);

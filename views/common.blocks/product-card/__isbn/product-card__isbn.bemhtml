@@ -1,0 +1,17 @@
+block('product-card')(
+
+    elem('isbn')(
+        content()(function() {
+            return [
+                {
+                    elem: 'property-header',
+                    content: 'ISBN: '
+                },
+                {
+                    elem: 'property-content',
+                    content: this.ctx.content
+                }
+            ];
+        })
+    )
+);

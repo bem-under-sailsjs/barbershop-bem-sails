@@ -1,0 +1,26 @@
+block('cart-info')(
+    content()(function() {
+        var cart = this.ctx.data.req.session.cart;
+        return [
+            {
+                elem: 'info',
+                content: [
+                    'В вашей корзине ',
+                    {
+                        elem: 'count',
+                        value: cart && cart.quantity,
+                        pluralize: ['товар', 'товара', 'товаров']
+                    }
+                ]
+            },
+            {
+                elem: 'icon'
+            },
+            {
+                elem: 'order',
+                content: 'Оформить заказ',
+                url: '/cart/'
+            }
+        ];
+    })
+);

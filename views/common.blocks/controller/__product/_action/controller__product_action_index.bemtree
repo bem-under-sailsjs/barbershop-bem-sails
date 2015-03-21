@@ -1,0 +1,18 @@
+block('controller')
+    .elem('product')
+    .mod('action', 'index')
+    .def()(function() {
+        var data = this.ctx.data;
+
+        var products = data.products && (function() {
+                return data.products.map(function(product) {
+                    return {
+                        block: 'product',
+                        data: product
+                    };
+                });
+            }.bind(this)());
+
+        return applyCtx(products);
+    }
+);

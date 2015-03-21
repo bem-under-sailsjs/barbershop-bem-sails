@@ -12,7 +12,7 @@ module.exports = {
      */
     index: function(req, res) {
         Product.find(function(err, products) {
-            res.view('product/index', {products: products});
+            res.render({data: {products: products}});
         });
     },
 
@@ -21,9 +21,31 @@ module.exports = {
      */
     show: function(req, res) {
         Product.findOne({id: req.param('id')}, function(err, product) {
-            res.view('product/show', {product: product});
+            res.render({data: {product: product}});
         });
+    },
 
+    addToCart: function(req, res) {
+
+        Product.findOne(req.param('id'), function(err, product) {
+            if (err) console.log(err);
+
+            Cart.add(
+                {
+                    productID: product.id,
+                    quantity: 1, // one product`
+                    price: product.price,
+                    image: product.image,
+                    header: product.header,
+                    theme: product.theme,
+                    title: product.title
+                },
+                req,
+                function(data) {
+                    res.redirect('/product/' + req.param('id'));
+                });
+
+        });
     },
 
     /**
@@ -38,10 +60,7 @@ module.exports = {
                 if (err) return next(err);
 
                 var productData = req.params.all();
-
-                if (file && file[0] && file[0].fd) {
-                    productData.image = file[0].fd.split('/').pop();
-                }
+                productData.image = getImageName(file);
 
                 // TODO: rewrite
                 Product.create(productData, function(err, product) {
@@ -60,7 +79,7 @@ module.exports = {
      */
     edit: function(req, res) {
         Product.findOne({id: req.param('id')}, function(err, product) {
-            res.view('product/edit', {product: product});
+            res.render({data: {product: product}});
         });
     },
 
@@ -68,7 +87,7 @@ module.exports = {
      * `ProductController.new()`
      */
     'new': function(req, res) {
-        res.view('product/new', { product: {} });
+        res.render({data: {product: {}}});
     },
 
     /**
@@ -83,10 +102,9 @@ module.exports = {
                 if (err) return next(err);
 
                 var productData = req.params.all();
+                productData.image = getImageName(file);
 
-                if (file && file[0] && file[0].fd) {
-                    productData.image = file[0].fd.split('/').pop();
-                }
+                console.log("productData.image: ", productData.image);
 
                 Product.update(req.param('id'), productData, function(err, product) {
                     if (err) res.redirect('/product/' + req.param('id') + '/edit');
@@ -114,3 +132,17 @@ module.exports = {
     }
 };
 
+/**
+ * Get file name from `file` object
+ *
+ * @param {Object} file
+ * @return {String} file name
+ */
+function getImageName(file) {
+
+    console.log('file: ', file);
+
+    if (file && file[0] && file[0].fd) {
+        return file[0].fd.split('/').pop();
+    }
+}

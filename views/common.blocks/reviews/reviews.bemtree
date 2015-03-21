@@ -1,0 +1,29 @@
+block('reviews')(
+    content()(function() {
+        var header = this.ctx.header;
+        return [
+            {
+                elem: 'header',
+                mix: [header],
+                content: header.content
+            },
+            {
+                elem: 'content',
+                content: [
+                    {
+                        block: 'reviews-item'
+                    },
+                    {
+                        block: 'reviews-item'
+                    }
+                ]
+            },
+            {
+                block: 'link',
+                mix: [{ block: 'reviews', elem: 'expand' }],
+                content: 'Еще отзывы',
+                url: '/reviews/product/1'
+            }
+        ]
+    })
+);

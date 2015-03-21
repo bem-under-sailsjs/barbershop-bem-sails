@@ -1,0 +1,55 @@
+block('product')(
+    content()(function() {
+            var product = this.ctx.data;
+
+            return [
+                {
+                    elem: 'image',
+                    content: product.image && ({
+                        block: 'image',
+                        width: '300px',
+                        url:  product.image,
+                        title: product.title,
+                        alt: product.title
+                    })
+                },
+                {
+                    elem: 'title',
+                    content: product.title
+                },
+                {
+                    elem: 'info',
+                    content: [
+                        {
+                            elem: 'head',
+                            content: product.head
+                        },
+                        {
+                            elem: 'text',
+                            content: product.text
+                        }
+                    ]
+                },
+                {
+                    block: 'link',
+                    mix: { block: 'product', elem: 'link' },
+                    content: 'Подробнее',
+                    url: '/product/' + product.id
+                },
+                {
+                    block: 'price',
+                    mix: [{ block: 'product', elem: 'price' }],
+                    value: product.price,
+                    currency: 'rub'
+                },
+                {
+                    elem: 'buy',
+                    content: {
+                        block: 'button',
+                        mods: {type: 'buy'},
+                        content: 'Купить'
+                    }
+                }
+            ];
+        }
+));

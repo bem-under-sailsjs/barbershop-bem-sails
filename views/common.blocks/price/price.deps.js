@@ -1,0 +1,8 @@
+({
+
+    shouldDeps: [
+        {
+            elems: ['currency', 'value']
+        }
+    ]
+});

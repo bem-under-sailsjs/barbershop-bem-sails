@@ -1,0 +1,7 @@
+block('menu')(
+    elem('item')(
+        content()(function() {
+            return { block: 'link', content: this.ctx.content, url: this.ctx.url }; // TODO: refactor to applyCtx
+        })
+    )
+);

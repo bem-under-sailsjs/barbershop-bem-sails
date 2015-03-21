@@ -1,0 +1,11 @@
+.product__link
+{
+    font-size: 13px;
+    font-style: italic;
+
+    display: inline-block;
+
+    margin: 0 0 20px 0;
+
+    color: #919091;
+}

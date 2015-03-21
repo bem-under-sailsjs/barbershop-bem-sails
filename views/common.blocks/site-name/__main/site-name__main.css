@@ -1,0 +1,11 @@
+.site-name__main
+{
+    font-size: 56px;
+
+    color: #69c;
+}
+
+.site-name__main > span
+{
+    color: #c00;
+}

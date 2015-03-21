@@ -1,0 +1,19 @@
+block('controller')
+    .elem('order')
+    .mod('action', 'show')
+    .def()(function() {
+
+        return applyCtx([
+            {
+                attrs: {style: 'color: #c00; margin: 15px 0 25px 0; font-size: 26px; font-weight: bold;'},
+                content: 'Ваш заказ'
+            },
+            {
+                block: 'order-card',
+                data: this.ctx.data
+            },
+            {
+                content: 'Спасибо за заказ! Он будет доставлен как можно скорее!'
+            }
+        ]);
+});

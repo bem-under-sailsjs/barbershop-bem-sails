@@ -1,0 +1,94 @@
+block('order-form')(
+    content()(function() {
+        return {
+            block: 'form',
+            action: '/order/cart/' + this.ctx.cart.id,
+            method: 'post',
+            data: this.ctx.data,
+            content: [
+                {
+                    block: 'order-form',
+                    elem: 'form',
+                    content: [
+                        {
+                            elem: 'header',
+                            content: 'Форма заказа'
+                        },
+                        {
+                            elem: 'item',
+                            name: 'name',
+                            content: 'Имя'
+                        },
+                        {
+                            elem: 'item',
+                            name: 'email',
+                            content: 'E-mail'
+                        },
+                        {
+                            elem: 'item',
+                            name: 'phone',
+                            content: 'Телефон'
+                        },
+                        {
+                            elem: 'item',
+                            mods: {type: 'textarea'},
+                            name: 'address',
+                            content: 'Адрес доставки'
+                        },
+                        {
+                            elem: 'item',
+                            name: 'date',
+                            content: 'Желаемая дата доставки'
+                        },
+                        {
+                            elem: 'item',
+                            name: 'time',
+                            content: 'Желаемое время доставки'
+                        },
+                        {
+                            elem: 'item',
+                            mods: {type: 'textarea'},
+                            name: 'comment',
+                            content: 'Комментарий'
+                        },
+                        {
+                            elem: 'control',
+                            content: {
+                                block: 'button',
+                                mods: {theme: 'islands', size: 'm', type: 'submit'},
+                                text: 'Подтвердить заказ'
+                            }
+                        }
+                    ]
+                }
+            ]
+        };
+    }),
+
+    elem('item')(
+
+        content()(function() {
+            console.log('this.ctx: ', this.ctx);
+
+            return [
+                {
+                    elem: 'label',
+                    tag: 'label',
+                    attrs: {'for': this.generateId()},
+                    content: this.ctx.content
+                },
+                {
+                    elem: 'input',
+                    content: {
+                        block: (this.ctx.mods && this.ctx.mods.type) ? this.ctx.mods.type : 'input',
+                        mods: {theme: 'islands', size: 'm'},
+                        val: '',
+                        id: this.generateId(),
+                        name: this.ctx.name,
+                        placeholder: this.ctx.content
+                    }
+                }
+            ];
+        })
+    )
+);

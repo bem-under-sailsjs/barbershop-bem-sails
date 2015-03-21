@@ -1,0 +1,45 @@
+match(this.ctx.data)
+    .def()(function() {
+    var data = this.ctx.data;
+
+    return applyCtx({
+        block: 'page',
+        head: [{elem: 'css', url: '/views/desktop.bundles/merged/_merged.css'}],
+        title: data.title,
+        content: [
+            {
+                block: 'head',
+                data: data
+            },
+            {
+                block: 'menu',
+                mods: {theme: 'islands', size: 'm'}
+            },
+            {
+                block: 'content',
+                content: [
+                    {
+                        elem: 'column',
+                        mods: {position: 'left'},
+                        content: ''
+                    },
+                    {
+                        elem: 'column',
+                        mods: {position: 'right'},
+                        content: {
+                            block: 'controller',
+                            elem: data.req.options.controller,
+                            mods: {action: data.req.options.action},
+                            data: data
+                        }
+                    }
+                ]
+            },
+            {
+                block: 'footer',
+                content: 'sails bem project stub 2015'
+            },
+            {elem: 'js', url: '/views/desktop.bundles/merged/_merged.js'}
+        ]
+    });
+});

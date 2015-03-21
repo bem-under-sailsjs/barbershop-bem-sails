@@ -1,0 +1,15 @@
+block('actions')(
+    content()(function() {
+        return [
+            {
+                elem: 'header',
+                mix: [{ block: 'content', elem: 'header' }],
+                content: 'Акции'
+            },
+            {
+                elem: 'content',
+                content: { block: 'product', mods: { type: 'actions' } }
+            }
+        ];
+    })
+);

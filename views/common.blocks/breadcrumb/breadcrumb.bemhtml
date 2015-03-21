@@ -1,0 +1,14 @@
+block('breadcrumb')(
+    tag()('ul'),
+
+    elem('item')(
+        tag()('li'),
+        content().match(function() { return this.ctx.url; })(function() {
+            return {
+                block: 'link',
+                url: this.ctx.url,
+                content: this.ctx.content
+            };
+        })
+    )
+);

@@ -1,0 +1,14 @@
+block('site-name')(
+    content()(function() {
+        return [
+            {
+                elem: 'main',
+                content: '<span>А</span>ктуальный <span>н</span>емецкий' // TODO: отрефакторить
+            },
+            {
+                elem: 'info',
+                content: 'Лучшие образовательные журналы на немецком и методические пособия'
+            }
+        ];
+    })
+);

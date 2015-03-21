@@ -1,0 +1,14 @@
+{
+    "author": "Alex Baumgernter",
+    "name": "simple-store-sails frontend",
+    "email": "alexbaumgertner@yandex.ru",
+    "version": "0.0.1",
+    "ignore": [
+        ".enb/tmp",
+        "node_modules",
+        "views/libs"
+    ],
+    "dependencies": {
+        "bem-components": "7329bcb78aaee74ab3372d93a026205d7c0ae77e"
+    }
+}

@@ -1,0 +1,10 @@
+block('cart-info')(
+    elem('icon')(
+        content()(function() {
+            return {
+                block: 'icon',
+                mods: { type: 'cart' }
+            };
+        })
+    )
+);

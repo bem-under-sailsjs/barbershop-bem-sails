@@ -1,0 +1,9 @@
+.reviews-item__date
+{
+    font-weight: bold;
+    font-style: italic;
+
+    margin: 0 5px 0 0;
+
+    color: #69c;
+}

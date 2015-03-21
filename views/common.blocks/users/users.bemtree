@@ -1,0 +1,11 @@
+block('users')(
+    content()(function() {
+
+            return this.ctx.data.users.map(function(item) {
+                return {
+                    elem: 'item',
+                    content: {block: 'user', content: item}
+                };
+            });
+        }
+));

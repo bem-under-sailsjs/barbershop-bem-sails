@@ -1,0 +1,11 @@
+.product-card__isbn
+{
+    font-size: 14px;
+
+    color: #919091;
+}
+
+.product-card__isbn .product-card__property-header
+{
+    font-weight: normal;
+}
