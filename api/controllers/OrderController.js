@@ -15,8 +15,9 @@ module.exports = {
             if (err) console.log(err);
 
             // Mail to manager and customer
-
-            res.redirect('/order/' + order.id);
+            emailService.sendEmail({order: order}, function() {
+                res.redirect('/order/' + order.id);
+            });
         });
     },
 
