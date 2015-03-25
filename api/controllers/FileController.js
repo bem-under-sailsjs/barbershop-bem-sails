@@ -67,8 +67,14 @@ module.exports = {
         if (file === 'undefined') return next();
 
         var filePath = path.resolve(__dirname, sails.config.fileUpload.staticDir, file);
-        var readStream = fs.createReadStream(filePath);
 
-        readStream.pipe(res);
+        if (fs.existsSync(filePath)) {
+            fs.createReadStream(filePath).pipe(res);
+
+        } else {
+            console.log("File ", filePath,  " is not exist.");
+            next();
+        }
+
     }
 };
