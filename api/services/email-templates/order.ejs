@@ -1,0 +1,34 @@
+<p>Имя <%= order.name %></p>
+<p>Email <%= order.email %></p>
+<p>Телефон <%= order.phone %></p>
+
+<h3>Доставка: </h3>
+<p>Адрес: <%= order.address %></p>
+<p>Дата: <%= order.date %></p>
+<p>Комментарий: <%= order.comment %></p>
+
+<table width="100%">
+    <tr>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th>Цена</th>
+    </tr>
+
+    <% order.items.forEach(function(item) { %>
+    <tr>
+        <td>
+            <%= item.header %>
+            <img src="<%= item.image %>" width="200px" />
+        </td>
+        <td>
+            <%= item.quantity %>
+        </td>
+        <td>
+            <%= item.price * item.quantity %>
+        </td>
+    </tr>
+    <% }) %>
+
+</table>
+
+<p>Итого: </p>
