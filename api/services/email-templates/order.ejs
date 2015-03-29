@@ -18,6 +18,7 @@
     <tr>
         <td>
             <%= item.header %>
+            <br/>
             <img src="<%= item.image %>" width="200px" />
         </td>
         <td>
@@ -31,4 +32,4 @@
 
 </table>
 
-<p>Итого: </p>
+<p>Итого: <%= order.totalPrice %> руб.</p>

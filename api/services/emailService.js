@@ -30,6 +30,10 @@ module.exports = {
             if (items && items.length > 0) {
                 order.items = items;
 
+                order.totalPrice = items.reduce(function(totalPrice, item) {
+                    return totalPrice + (item.quantity * item.price);
+                }, 0); // 0 – init value
+
                 try {
                     textMessage = JSON.stringify(items);
                     htmlMessage = template({order: order});
