@@ -2,8 +2,12 @@ block('cart-info')(
     elem('icon')(
         content()(function() {
             return {
-                block: 'icon',
-                mods: { type: 'cart' }
+                block: 'link',
+                url: '/cart/',
+                content: {
+                    block: 'icon',
+                    mods: {type: 'cart'}
+                }
             };
         })
     )
