@@ -12,3 +12,9 @@
 {
     display: block;
 }
+
+.product-card__content .textarea
+{
+    width: 100%;
+    min-height: 50px;
+}

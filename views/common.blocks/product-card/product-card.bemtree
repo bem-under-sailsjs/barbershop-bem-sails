@@ -1,8 +1,80 @@
 block('product-card')
     .def()(function() {
+    var product = this.ctx.data.product;
+
     return applyCtx({
         block: 'product-card',
         mods: this.ctx.mods,
-        data: this.ctx.data
+        data: this.ctx.data,
+        content: [
+            {
+                elem: 'header',
+                content: product.header
+            },
+            {
+                elem: 'columns',
+                content: [
+                    {
+                        elem: 'column',
+                        mods: {position: 'left'},
+                        content: {
+                            elem: 'image',
+                            product: product
+                        }
+                    },
+                    {
+                        elem: 'column',
+                        mods: {position: 'center'},
+                        content: [
+                            {
+                                elem: 'theme',
+                                content: product.theme
+                            },
+                            {
+                                elem: 'annotation',
+                                content: product.annotation
+                            },
+                            {
+                                elem: 'content',
+                                content: product.content
+                            },
+                            {
+                                elem: 'isbn',
+                                content: product.isbn
+                            },
+                            {
+                                elem: 'price',
+                                value: product.price,
+                                content: {
+                                    block: 'price',
+                                    content: product.price,
+                                    value: product.price,
+                                    currency: 'rub'
+                                }
+                            },
+                            {
+                                elem: 'control',
+                                data: this.ctx.data,
+                                id: product.id
+                            }
+                        ]
+                    },
+                    {
+                        elem: 'column',
+                        mods: {position: 'right'},
+                        content: [
+                            {
+                                elem: 'balance',
+                                content: 'Наличие журнала в бумажном варианте'
+                            },
+                            {
+                                elem: 'e-buy-info',
+                                content: 'Купить в электронном варианте'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     });
 });

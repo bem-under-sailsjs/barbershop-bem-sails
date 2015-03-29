@@ -9,3 +9,8 @@
 {
     font-weight: normal;
 }
+
+.product-card__isbn .input
+{
+    width: 100%;
+}

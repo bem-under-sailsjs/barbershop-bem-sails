@@ -1,61 +1,120 @@
 block('product-card').mod('type', 'edit')(
-    def()(function() {
-        var product = this.ctx.data.product;
 
-        applyCtx({
-            block: 'form',
-            enctype: 'multipart/form-data',
-            action: '/product/' + product.id + '/update/',
-            method: 'post',
-            data: this.ctx.data,
-            content: [
-                {
+    def()(function() {
+            applyCtx({
+                block: 'form',
+                data: this.ctx.data,
+                method: 'post',
+                action: '/product/' + this.ctx.data.product.id + '/update/',
+                content: {
                     block: 'product-card',
-                    content: [
-                        {
-                            elem: 'title',
-                            content: {
-                                block: 'input',
-                                mods: {theme: 'islands', size: 'm'},
-                                name: 'title',
-                                val: product.title
-                            }
-                        },
-                        {
-                            elem: 'image',
-                            content: [
-                                product.image && ({
-                                    block: 'image',
-                                    url:  product.image,
-                                    title: product.title,
-                                    alt: product.title
-                                }),
-                                {
-                                    block: 'attach',
-                                    mods: {theme: 'islands', size: 'm'},
-                                    button: 'Choose file',
-                                    noFileText: 'No file chosen',
-                                    name: 'image'
-                                }
-                            ]
-                        },
-                        {
-                            elem: 'price',
-                            content: {
-                                block: 'input',
-                                mods: {theme: 'islands', size: 'm'},
-                                name: 'price',
-                                val: product.price
-                            }
-                        }
-                    ]
-                },
-                {
-                    block: 'button',
-                    mods: {theme: 'islands', size: 'm', type: 'submit'},
-                    text: 'Save'
+                    data: this.ctx.data,
+                    mods: {'type': 'edit'},
+                    content: this.ctx.content
                 }
-            ]
-        });
-    })
+            });
+        }
+
+    ),
+
+    elem('header')(
+        content()(function() {
+            return {
+                block: 'input',
+                mods: {theme: 'islands', size: 'm'},
+                name: 'header',
+                val: this.ctx.content
+            };
+        })
+    ),
+
+
+    elem('image')(
+        content()(function() {
+            var product = this.ctx.product;
+
+            return [
+                product.image && ({
+                    block: 'image',
+                    width: '300px',
+                    url:  product.image,
+                    title: product.title,
+                    alt: product.title
+                }),
+                {
+                    block: 'attach',
+                    mods: {theme: 'islands', size: 'm'},
+                    button: 'Choose file',
+                    noFileText: 'No file chosen',
+                    name: 'image'
+                }
+            ];
+        })
+    ),
+
+    elem('theme')(
+        content()(function() {
+            return {
+                block: 'input',
+                mods: {theme: 'islands', size: 'm'},
+                name: 'theme',
+                val: this.ctx.content
+            };
+        })
+    ),
+
+    elem('annotation')(
+        content()(function() {
+            return {
+                block: 'input',
+                mods: {theme: 'islands', size: 'm'},
+                name: 'annotation',
+                val: this.ctx.content
+            };
+        })
+    ),
+
+    elem('content')(
+        content()(function() {
+            return {
+                block: 'textarea',
+                attrs: {rows: 15},
+                mods: {theme: 'islands', size: 'm'},
+                name: 'content',
+                val: this.ctx.content
+            };
+        })
+    ),
+
+    elem('isbn')(
+        content()(function() {
+            return {
+                block: 'input',
+                mods: {theme: 'islands', size: 'm'},
+                name: 'isbn',
+                val: this.ctx.content
+            };
+        })
+    ),
+
+    elem('price')(
+        content()(function() {
+            return {
+                block: 'input',
+                mods: {theme: 'islands', size: 'm'},
+                name: 'price',
+                val: this.ctx.value
+            };
+        })
+    ),
+
+    elem('control')(
+        content()(function() {
+            return {
+                block: 'button',
+                mods: {type: 'submit', theme: 'islands', size: 'm'},
+                text: 'Сохранить'
+            };
+        })
+    )
 );
