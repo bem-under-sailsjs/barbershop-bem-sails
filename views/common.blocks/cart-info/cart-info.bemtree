@@ -8,7 +8,7 @@ block('cart-info')(
                     'В вашей корзине ',
                     {
                         elem: 'count',
-                        value: cart && cart.quantity,
+                        value: (cart && cart.quantity) || 0,
                         pluralize: ['товар', 'товара', 'товаров']
                     }
                 ]
