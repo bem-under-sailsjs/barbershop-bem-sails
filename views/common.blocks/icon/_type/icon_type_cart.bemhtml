@@ -1,6 +1,6 @@
 block('icon').mod('type', 'cart')(
     def()(function() {
-            this.ctx.url = 'icons/cart.png';
+            this.ctx.url = '/static/img/cart.png';
             applyNext();
         }
     )

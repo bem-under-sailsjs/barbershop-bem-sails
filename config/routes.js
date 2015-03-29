@@ -79,10 +79,6 @@ module.exports.routes = {
     // Files
     'get /uploads/:id': 'FileController.download',
 
-    // CSS and JS
-    // TODO: add touch.pad & touch.phone bundles
-    'get /views/desktop.bundles/merged/:file': 'FileController.getStatic',
-
-    // Design imgs
-    'get /img/:file': 'FileController.getStatic'
+    // static
+    'get /static/:directory/:file': 'FileController.getStatic'
 };

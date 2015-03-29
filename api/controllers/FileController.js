@@ -62,11 +62,12 @@ module.exports = {
 
     getStatic: function(req, res, next) {
         var file = req.param('file');
+        var directory = req.param('directory');
 
         // TODO: fix this:
         if (file === 'undefined') return next();
 
-        var filePath = path.resolve(__dirname, sails.config.fileUpload.staticDir, file);
+        var filePath = path.resolve(__dirname, sails.config.fileUpload.staticDir, directory, file);
 
         if (fs.existsSync(filePath)) {
             fs.createReadStream(filePath).pipe(res);

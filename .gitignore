@@ -128,6 +128,8 @@ uploads
 
 views/.enb/tmp/
 views/libs/
+views/static/js/_merged.js
+views/static/css/_merged.css
 views/*bundles*/merged/
 views/*.bundles/*/*.*
 views/*.bundles/*/*.*.*

@@ -50,7 +50,11 @@
     "start": "node app.js",
     "debug": "node debug app.js",
     "deps": "bower-npm-install --non-interactive",
-    "views-compile": "enb make -d views"
+    "make-views": "npm run views-compile && npm run copy-views",
+    "views-compile": "node_modules/.bin/enb make -d views --no-cache",
+    "copy-views": "npm run copy-css && npm run copy-js",
+    "copy-css": "cp views/desktop.bundles/merged/_merged.css views/static/css/",
+    "copy-js": "cp views/desktop.bundles/merged/_merged.js views/static/js/"
   },
   "main": "app.js",
   "repository": {
