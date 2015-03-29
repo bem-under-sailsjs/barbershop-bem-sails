@@ -15,8 +15,11 @@ module.exports = {
             if (err) console.log(err);
 
             // Mail to manager and customer
+            emailService.sendEmail({order: order}, function(err) {
+                // TODO: set flash with err
 
-            res.redirect('/order/' + order.id);
+                res.redirect('/order/' + order.id);
+            });
         });
     },
 

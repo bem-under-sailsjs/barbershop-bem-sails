@@ -68,8 +68,6 @@ block('order-form')(
     elem('item')(
 
         content()(function() {
-            console.log('this.ctx: ', this.ctx);
-
             return [
                 {
                     elem: 'label',
