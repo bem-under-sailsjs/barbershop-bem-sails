@@ -1,0 +1,15 @@
+.cart
+{
+    width: 100%;
+}
+
+.cart__title
+{
+    font-size: .9em;
+
+    display: inline-block;
+
+    margin: 0 0 0 15px;
+
+    vertical-align: top;
+}

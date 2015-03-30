@@ -19,7 +19,12 @@ block('cart')(
                                 alt: item.title
                             },
                             {
-                                content: item.header + ' / ' + item.theme
+                                elem: 'title',
+                                content: {
+                                    block: 'link',
+                                    url: '/product/' + item.productID,
+                                    content: item.header + ' / ' + item.theme
+                                }
                             }
                         ]
                     },
