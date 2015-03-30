@@ -1,7 +1,9 @@
 .product
 {
     display: inline-block;
-    vertical-align: top;
+
     width: 300px;
     margin: 0 25px 0 0;
+
+    vertical-align: top;
 }
