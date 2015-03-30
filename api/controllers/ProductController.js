@@ -139,9 +139,6 @@ module.exports = {
  * @return {String} file name
  */
 function getImageName(file) {
-
-    console.log('file: ', file);
-
     if (file && file[0] && file[0].fd) {
         return file[0].fd.split('/').pop();
     }
