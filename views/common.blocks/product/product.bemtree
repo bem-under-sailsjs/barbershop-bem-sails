@@ -5,13 +5,13 @@ block('product')(
             return [
                 {
                     elem: 'image',
-                    content: product.image && ({
+                    content: {
                         block: 'image',
                         width: '300px',
-                        url:  product.image,
+                        url:  product.image || 'no_image.png', // TODO: Fixit
                         title: product.title,
                         alt: product.title
-                    })
+                    }
                 },
                 {
                     elem: 'title',
