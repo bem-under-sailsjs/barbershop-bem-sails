@@ -4,6 +4,7 @@ block('product-card').mod('type', 'edit')(
             applyCtx({
                 block: 'form',
                 data: this.ctx.data,
+                attrs: {'enctype': 'multipart/form-data'},
                 method: 'post',
                 action: '/product/' + this.ctx.data.product.id + '/update/',
                 content: {
