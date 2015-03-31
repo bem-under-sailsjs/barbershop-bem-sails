@@ -5,10 +5,12 @@ block('product-card')(
             return [
                 {
                     elem: 'property-header',
+                    tag: 'span',
                     content: 'ISBN: '
                 },
                 {
                     elem: 'property-content',
+                    tag: 'span',
                     content: this.ctx.content
                 }
             ];

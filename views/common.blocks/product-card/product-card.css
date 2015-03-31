@@ -9,3 +9,10 @@
 {
     font-weight: bold;
 }
+
+.product-card .product-card__control
+{
+    display: inline-block;
+
+    vertical-align: top;
+}
