@@ -14,6 +14,13 @@ block('controller')
                 });
             }.bind(this)());
 
+        products.unshift({
+            block: 'link',
+            attrs: {style: 'display: block; margin: 0 0 20px 0;'},
+            url: '/product/new/',
+            content: 'Добавить продукт'
+        });
+
         return applyCtx(products);
     }
 );
