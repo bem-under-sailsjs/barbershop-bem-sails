@@ -34,6 +34,7 @@ module.exports = {
     beforeValidate: function(values, next) {
         // don't save _csrf token in database
         if(values._csrf) delete values._csrf;
+        if(!values.image) delete values.image; // delete '', null, 0
         next();
     },
 
