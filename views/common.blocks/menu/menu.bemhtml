@@ -10,6 +10,11 @@ block('menu')(
                     },
                     {
                         elem: 'item',
+                        content: 'Товары',
+                        url: '/products/'
+                    },
+                    {
+                        elem: 'item',
                         content: 'Как оформить заказ',
                         url: '/how-to-order/'
                     },
@@ -17,11 +22,6 @@ block('menu')(
                         elem: 'item',
                         content: 'Доставка и оплата',
                         url: '/delivery/'
-                    },
-                    {
-                        elem: 'item',
-                        content: 'Предзаказ',
-                        url: '/reservation/'
                     },
                     {
                         elem: 'item',

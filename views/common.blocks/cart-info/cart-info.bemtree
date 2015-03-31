@@ -3,6 +3,9 @@ block('cart-info')(
         var cart = this.ctx.data.req.session.cart;
         return [
             {
+                elem: 'icon'
+            },
+            {
                 elem: 'info',
                 content: [
                     'В вашей корзине ',
@@ -12,9 +15,6 @@ block('cart-info')(
                         pluralize: ['товар', 'товара', 'товаров']
                     }
                 ]
-            },
-            {
-                elem: 'icon'
             },
             {
                 elem: 'order',
