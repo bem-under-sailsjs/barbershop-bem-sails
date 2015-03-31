@@ -1,21 +1,29 @@
 block('product')(
     content()(function() {
-            var product = this.ctx.data;
+            var product = this.ctx.product;
 
             return [
                 {
                     elem: 'image',
                     content: {
-                        block: 'image',
-                        width: '300px',
-                        url:  product.image || 'no_image.png', // TODO: Fixit
-                        title: product.title,
-                        alt: product.title
+                        block: 'link',
+                        url: '/product/' + product.id,
+                        content: {
+                            block: 'image',
+                            width: '138px',
+                            url:  product.image || 'no_image.png', // TODO: Fixit
+                            title: product.title,
+                            alt: product.title
+                        }
                     }
                 },
                 {
                     elem: 'title',
-                    content: product.title
+                    content: {
+                        block: 'link',
+                        url: '/product/' + product.id,
+                        content: product.title
+                    }
                 },
                 {
                     elem: 'info',
@@ -31,12 +39,6 @@ block('product')(
                     ]
                 },
                 {
-                    block: 'link',
-                    mix: { block: 'product', elem: 'link' },
-                    content: 'Подробнее',
-                    url: '/product/' + product.id
-                },
-                {
                     block: 'price',
                     mix: [{ block: 'product', elem: 'price' }],
                     value: product.price,
@@ -45,9 +47,16 @@ block('product')(
                 {
                     elem: 'buy',
                     content: {
-                        block: 'button',
-                        mods: {type: 'buy'},
-                        content: 'Купить'
+                        block: 'form',
+                        data: this.ctx.data,
+                        method: 'post',
+                        action: '/product/' + product.id + '/add-to-cart/',
+                        content: {
+                            block: 'button',
+                            mix: [{block: 'product-card', elem: 'buy'}],
+                            mods: {type: 'submit', theme: 'islands', size: 'm'},
+                            text: 'Купить'
+                        }
                     }
                 }
             ];

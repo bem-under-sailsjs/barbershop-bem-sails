@@ -1,6 +1,9 @@
 ({
     shouldDeps: [
         {
+            elems: ['buy', 'image', 'info', 'link', 'price', 'title']
+        },
+        {
             block: 'link'
         },
         {
@@ -10,7 +13,11 @@
             block: 'price'
         },
         {
-            block: 'button'
+            block: 'button',
+            mods: {type: 'link'}
+        },
+        {
+            block: 'form'
         }
     ]
 });

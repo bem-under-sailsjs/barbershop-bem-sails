@@ -8,7 +8,8 @@ block('controller')
                 return data.products.map(function(product) {
                     return {
                         block: 'product',
-                        data: product
+                        data: data,
+                        product: product
                     };
                 });
             }.bind(this)());

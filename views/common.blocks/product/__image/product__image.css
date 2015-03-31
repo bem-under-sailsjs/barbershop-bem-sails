@@ -1,7 +1,17 @@
 .product__image
 {
+    overflow: hidden;
+
     width: 138px;
     height: 182px;
 
     border: 1px solid #e5e1de;
+}
+
+.product__image .link
+{
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
 }
