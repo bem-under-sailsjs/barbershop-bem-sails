@@ -8,6 +8,14 @@ block('product-card')
         data: this.ctx.data,
         content: [
             {
+                elem: 'edit',
+                content: {
+                    block: 'link',
+                    url: '/product/' + product.id + '/edit/',
+                    content: 'Редактировать'
+                }
+            },
+            {
                 elem: 'header',
                 content: product.header
             },

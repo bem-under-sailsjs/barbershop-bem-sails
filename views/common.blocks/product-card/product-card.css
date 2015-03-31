@@ -16,3 +16,15 @@
 
     vertical-align: top;
 }
+
+.product-card .product-card__edit .link
+{
+    font-size: 1.1em;
+
+    display: inline-block;
+
+    margin: 15px 0;
+    padding: 5px 10px;
+
+    background-color: gold;
+}
