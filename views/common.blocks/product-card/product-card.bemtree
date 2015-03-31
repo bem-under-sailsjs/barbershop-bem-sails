@@ -7,14 +7,17 @@ block('product-card')
         mods: this.ctx.mods,
         data: this.ctx.data,
         content: [
-            {
+            // TODO: rewrite
+            this.ctx.data.req.session.User &&
+            this.ctx.data.req.session.User.isAdmin &&
+            ({
                 elem: 'edit',
                 content: {
                     block: 'link',
                     url: '/product/' + product.id + '/edit/',
                     content: 'Редактировать'
                 }
-            },
+            }),
             {
                 elem: 'header',
                 content: product.header
