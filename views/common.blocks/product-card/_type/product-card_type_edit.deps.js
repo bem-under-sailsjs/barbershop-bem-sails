@@ -15,6 +15,9 @@
         },
         {
             block: 'textarea'
+        },
+        {
+            block: 'label'
         }
     ]
 });

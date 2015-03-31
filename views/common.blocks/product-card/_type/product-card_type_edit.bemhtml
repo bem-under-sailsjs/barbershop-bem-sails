@@ -1,12 +1,14 @@
 block('product-card').mod('type', 'edit')(
-
     def()(function() {
+            var productID = this.ctx.data.product.id,
+                action = productID ? '/product/' + productID + '/update/' : '/product/create/';
+
             applyCtx({
                 block: 'form',
                 data: this.ctx.data,
                 attrs: {'enctype': 'multipart/form-data'},
                 method: 'post',
-                action: '/product/' + this.ctx.data.product.id + '/update/',
+                action: action,
                 content: {
                     block: 'product-card',
                     data: this.ctx.data,
@@ -15,20 +17,26 @@ block('product-card').mod('type', 'edit')(
                 }
             });
         }
-
     ),
 
     elem('header')(
         content()(function() {
-            return {
-                block: 'input',
-                mods: {theme: 'islands', size: 'm'},
-                name: 'header',
-                val: this.ctx.content
-            };
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Заголовок:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'header',
+                    val: this.ctx.content
+                }
+            ];
         })
     ),
-
 
     elem('image')(
         content()(function() {
@@ -38,7 +46,7 @@ block('product-card').mod('type', 'edit')(
                 product.image && ({
                     block: 'image',
                     width: '300px',
-                    url:  product.image,
+                    url: product.image,
                     title: product.title,
                     alt: product.title
                 }),
@@ -55,57 +63,95 @@ block('product-card').mod('type', 'edit')(
 
     elem('theme')(
         content()(function() {
-            return {
-                block: 'input',
-                mods: {theme: 'islands', size: 'm'},
-                name: 'theme',
-                val: this.ctx.content
-            };
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Тема:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'theme',
+                    val: this.ctx.content
+                }
+            ];
         })
     ),
 
     elem('annotation')(
         content()(function() {
-            return {
-                block: 'input',
-                mods: {theme: 'islands', size: 'm'},
-                name: 'annotation',
-                val: this.ctx.content
-            };
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Аннотация:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'annotation',
+                    val: this.ctx.content
+                }
+            ];
         })
     ),
 
     elem('content')(
         content()(function() {
-            return {
-                block: 'textarea',
-                attrs: {rows: 15},
-                mods: {theme: 'islands', size: 'm'},
-                name: 'content',
-                val: this.ctx.content
-            };
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Содержание:'
+                },
+                {
+                    block: 'textarea',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'content',
+                    val: this.ctx.content
+                }
+            ];
         })
     ),
 
     elem('isbn')(
         content()(function() {
-            return {
-                block: 'input',
-                mods: {theme: 'islands', size: 'm'},
-                name: 'isbn',
-                val: this.ctx.content
-            };
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Номер ISBN:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'isbn',
+                    val: this.ctx.content
+                }];
         })
     ),
 
     elem('price')(
         content()(function() {
-            return {
-                block: 'input',
-                mods: {theme: 'islands', size: 'm'},
-                name: 'price',
-                val: this.ctx.value
-            };
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Цена:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'price',
+                    val: this.ctx.value
+                }
+            ];
         })
     ),
 

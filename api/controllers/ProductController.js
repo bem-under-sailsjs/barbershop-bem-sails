@@ -87,7 +87,26 @@ module.exports = {
      * `ProductController.new()`
      */
     'new': function(req, res) {
-        res.render({data: {product: {}}});
+        res.render({
+            data: {
+                product: {
+                    publisher: 'string', // Наименование журнала (издания)
+                    publishing_year: 'integer', // Год издания
+                    number: 'integer', // номер
+                    subject: 'string', // Тематика
+                    theme: 'string', // Тема
+                    annotation: 'string',  // Аннотация
+                    content: 'string', // Содержание
+                    isbn: 'string', // ISBN
+                    price: 'integer', // Цена
+                    //tags: 'array', // Тэги
+                    image: 'string', // Обложка
+                    header: 'string', // заголовок
+                    balance: 'integer' // Баланс
+
+                }
+            }
+        });
     },
 
     /**
