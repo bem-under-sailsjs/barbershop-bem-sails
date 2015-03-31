@@ -30,6 +30,7 @@ module.exports.policies = {
 
     ProductController: {
         '*': ['passport', 'isAdmin'],
+        addToCart: 'passport',
         show: 'passport',
         index: 'passport'
     },
