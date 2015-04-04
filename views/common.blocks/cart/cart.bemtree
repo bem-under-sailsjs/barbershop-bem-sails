@@ -2,9 +2,12 @@ block('cart')(
     def()(function() {
         var data = this.ctx.data,
             cart = data.cart,
-            items = [];
+            items = [],
+            totalPrice = 0;
 
         cart.items.forEach(function(item, index) {
+            totalPrice += item.price * item.quantity;
+
             items.push({
                 elem: 'item',
                 content: [
@@ -77,6 +80,10 @@ block('cart')(
                     {
                         elem: 'items',
                         content: items
+                    },
+                    {
+                        elem: 'footer',
+                        content: totalPrice
                     }
                 ]
             },
