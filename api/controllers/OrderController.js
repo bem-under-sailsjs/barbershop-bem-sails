@@ -18,6 +18,8 @@ module.exports = {
             emailService.sendEmail({order: order}, function(err) {
                 // TODO: set flash with err
 
+                // TODO: clear Cart and set 'proceed' status to order
+
                 res.redirect('/order/' + order.id);
             });
         });

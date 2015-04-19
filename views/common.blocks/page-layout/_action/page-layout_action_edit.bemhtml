@@ -1,0 +1,91 @@
+block('page-layout').mod('action', 'edit')(
+    def()(function() {
+            var pageID = this.ctx.data.page.id,
+                action = pageID ? '/pages/' + pageID + '/update/' : '/page/create/';
+
+            applyCtx({
+                block: 'form',
+                data: this.ctx.data,
+                method: 'post',
+                action: action,
+                content: {
+                    block: 'page-layout',
+                    data: this.ctx.data,
+                    mods: {action: 'edit'},
+                    content: this.ctx.content
+                }
+            });
+        }
+    ),
+
+    elem('title')(
+        content()(function() {
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Тема:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'title',
+                    val: this.ctx.content
+                }
+            ];
+        })
+    ),
+
+    elem('content')(
+        content()(function() {
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Содержание:'
+                },
+                {
+                    block: 'textarea',
+                    mods: {theme: 'islands', size: 'm'},
+                    attrs: { rows: 10 },
+                    id: this.generateId(),
+                    name: 'content',
+                    val: this.ctx.content
+                }
+            ];
+        })
+    ),
+
+    elem('url')(
+        content()(function() {
+            return [
+                {
+                    block: 'label',
+                    id: this.generateId(),
+                    content: 'Url:'
+                },
+                {
+                    block: 'input',
+                    mods: {theme: 'islands', size: 'm'},
+                    id: this.generateId(),
+                    name: 'url',
+                    val: this.ctx.content
+                }];
+        })
+    ),
+
+    elem('edit')(
+        def()('')
+    ),
+
+    elem('control')(
+        content()(function() {
+            return {
+                block: 'button',
+                mods: {type: 'submit', theme: 'islands', size: 'm'},
+                text: 'Сохранить'
+            };
+        })
+    )
+);
