@@ -7,12 +7,10 @@
 
 module.exports = {
 
-
-
   /**
    * `CartController.show()`
    */
-  show: function (req, res, next) {
+  show: function (req, res) {
 
       // TODO: do check
       if (req.session.cart) {
@@ -32,7 +30,6 @@ module.exports = {
       todo: 'edit() is not implemented yet!'
     });
   },
-
 
   /**
    * `CartController.delete()`

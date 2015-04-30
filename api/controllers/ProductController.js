@@ -42,7 +42,7 @@ module.exports = {
                 },
                 req,
                 function(data) {
-                    res.redirect('/product/' + req.param('id'));
+                    res.redirect('/cart/');
                 });
 
         });

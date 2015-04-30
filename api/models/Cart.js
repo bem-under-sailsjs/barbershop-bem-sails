@@ -31,14 +31,7 @@ module.exports = {
      */
     add: function(data, req, callback) {
         // find or create user cart
-        var user = req.session.User,
-            cartID;
-
-        if(user) {
-            cartID = user.cartID;
-        } else if (req.session.cart) {
-            cartID = req.session.cart.id;
-        }
+        var cartID = req.session.cart && req.session.cart.id;
 
         if (cartID) {
             // TODO: rewrite!
@@ -77,8 +70,6 @@ module.exports = {
                             quantity: cart.quantity
                         },
                         function() {
-                            console.log("err: ", err);
-
                             req.session.cart = cart;
                             req.session.save();
 
@@ -93,9 +84,7 @@ module.exports = {
             Cart.create({items: [data], quantity: data.quantity}, function(err, cart) {
                 if (err) {callback(err);}
 
-                req.session.User.cartID = cart.id;
                 req.session.cart = cart;
-
                 req.session.save();
 
                 callback(cart);
