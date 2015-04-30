@@ -58,9 +58,6 @@ module.exports = {
 
     update: function(req, res) {
         Page.update(req.param('id'), req.params.all(), function(err, page) {
-
-            console.log("page: ", page);
-
             res.redirect('/pages/' + req.param('id'));
         });
     },
