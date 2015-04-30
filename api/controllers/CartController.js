@@ -20,7 +20,7 @@ module.exports = {
               res.render({data: {cart: cart}});
           });
       } else {
-          next();
+          res.redirect('/products/');
       }
   },
 

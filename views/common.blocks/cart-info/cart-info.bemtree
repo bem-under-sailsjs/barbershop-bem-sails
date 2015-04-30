@@ -18,7 +18,7 @@ block('cart-info')(
             },
             {
                 elem: 'order',
-                content: 'Оформить заказ',
+                content: (cart && cart.quantity) ? 'Оформить заказ' : 'Товары',
                 url: '/cart/'
             }
         ];

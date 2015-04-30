@@ -34,8 +34,6 @@ module.exports = {
         var user = req.session.User,
             cartID;
 
-        console.log("user: ", user);
-
         if(user) {
             cartID = user.cartID;
         } else if (req.session.cart) {
@@ -43,7 +41,6 @@ module.exports = {
         }
 
         if (cartID) {
-
             // TODO: rewrite!
             Cart.findOne({id: req.session.cart.id}, function(err, cart) {
                 if (err) {callback(err);}
@@ -93,17 +90,11 @@ module.exports = {
             }.bind(this));
 
         } else {
-
             Cart.create({items: [data], quantity: data.quantity}, function(err, cart) {
                 if (err) {callback(err);}
 
-                if(user) {
-                    req.session.User.cartID = cart.id;
-                } else {
-                    req.session.cart = cart;
-                }
-
-                console.log("req.session.cart: ", req.session.cart);
+                req.session.User.cartID = cart.id;
+                req.session.cart = cart;
 
                 req.session.save();
 
@@ -112,4 +103,3 @@ module.exports = {
         }
     }
 };
-
