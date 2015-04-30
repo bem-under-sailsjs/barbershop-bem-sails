@@ -1,0 +1,20 @@
+.page-layout__title
+{
+    font-size: 1.2em;
+
+    margin: 0 0 10px 0;
+}
+
+.page-layout__content
+{
+    line-height: 1.3em;
+
+    width: 80%;
+}
+
+.page-layout__url
+{
+    font-size: 0.5em;
+
+    margin: 25px 0 25px 0;
+}

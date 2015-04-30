@@ -9,6 +9,6 @@
         "views/libs"
     ],
     "dependencies": {
-        "bem-components": "7329bcb78aaee74ab3372d93a026205d7c0ae77e"
+        "bem-components": "~2.1.1"
     }
 }

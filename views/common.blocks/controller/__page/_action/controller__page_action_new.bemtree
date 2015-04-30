@@ -1,0 +1,11 @@
+block('controller')
+    .elem('page')
+    .mod('action', 'new')
+    .def()(function() {
+
+    return applyCtx({
+        block: 'page-layout',
+        mods: {action: 'edit'},
+        data: this.ctx.data
+    });
+});

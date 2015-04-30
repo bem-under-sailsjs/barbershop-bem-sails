@@ -1,0 +1,21 @@
+block('controller')
+    .elem('page')
+    .mod('action', 'index')
+    .def()(function() {
+    var data = this.ctx.data;
+    var pageBlocks = [];
+
+    data.pages.forEach(function(page) {
+        pageBlocks.push({
+            block: 'page-layout',
+            mods: {action: 'edit'},
+            data: data
+        });
+    });
+
+    console.log("pageBlocks: ", pageBlocks);
+
+    return applyNext({
+        'ctx.content': pageBlocks
+    });
+});

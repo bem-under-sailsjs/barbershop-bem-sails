@@ -63,6 +63,21 @@ module.exports.routes = {
     'post /product/:id/update': 'ProductController.update',
     'post /product/:id/delete': 'ProductController.delete',
 
+    // Pages
+    'get /pages/': 'PageController.index',
+    'get /about/': 'PageController.showByUrl',
+    'get /delivery/': 'PageController.showByUrl',
+    'get /contacts/': 'PageController.showByUrl',
+    'get /how-to-order/': 'PageController.showByUrl',
+
+    'get /pages/new': 'PageController.new',
+    'post /pages/create': 'PageController.create',
+
+    'get /pages/:id': 'PageController.show',
+    'get /pages/:id/edit': 'PageController.edit',
+    'post /pages/:id/update': 'PageController.update',
+    'post /pages/:id/delete': 'PageController.delete',
+
     // Cart
     'get /cart/': 'CartController.show',
 

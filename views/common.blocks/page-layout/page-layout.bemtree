@@ -1,0 +1,38 @@
+block('page-layout')
+    .def()(function() {
+    var page = this.ctx.data.page || {};
+
+    return applyCtx({
+        block: 'page-layout',
+        mods: this.ctx.mods,
+        data: this.ctx.data,
+        content: [
+            {
+                elem: 'title',
+                content: page.title
+            },
+            {
+                elem: 'content',
+                content: page.content
+            },
+            {
+                elem: 'url',
+                content: page.url
+            },
+            {
+                elem: 'control'
+            },
+            // TODO: rewrite
+            this.ctx.data.req.session.User &&
+            this.ctx.data.req.session.User.isAdmin &&
+            ({
+                elem: 'edit',
+                content: {
+                    block: 'link',
+                    url:  (page && page.id) ? '/pages/' + page.id + '/edit/' : '/pages/new',
+                    content: 'Редактировать'
+                }
+            })
+        ]
+    });
+});

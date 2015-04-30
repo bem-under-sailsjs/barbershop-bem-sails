@@ -1,0 +1,45 @@
+.page-layout_action_edit .label
+{
+    font-size: 14px;
+
+    display: inline-block;
+
+    width: 140px;
+
+    vertical-align: top;
+}
+
+.page-layout_action_edit .page-layout__edit
+{
+    display: none;
+
+    margin: 0 0 20px 0;
+}
+
+.page-layout_action_edit .page-layout__title
+{
+    font-size: 1.2em;
+
+    margin: 0 0 10px 0;
+}
+
+.page-layout_action_edit .page-layout__content
+{
+    line-height: 1.3em;
+
+    width: 80%;
+}
+
+.page-layout_action_edit .page-layout__content .textarea
+{
+    display: inline-block;
+
+    width: 500px;
+}
+
+.page-layout_action_edit .page-layout__url
+{
+    font-size: 0.5em;
+
+    margin: 25px 0 25px 0;
+}

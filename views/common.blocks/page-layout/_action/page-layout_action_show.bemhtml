@@ -1,0 +1,7 @@
+block('page-layout')
+    .mod('action', 'show')
+(
+    elem('control')(
+
+    )
+);
