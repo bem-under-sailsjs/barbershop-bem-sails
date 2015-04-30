@@ -110,6 +110,7 @@ block('product-card').mod('type', 'edit')(
                 {
                     block: 'textarea',
                     mods: {theme: 'islands', size: 'm'},
+                    attrs: {rows: 10},
                     id: this.generateId(),
                     name: 'content',
                     val: this.ctx.content

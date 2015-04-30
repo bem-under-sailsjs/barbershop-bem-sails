@@ -14,6 +14,8 @@
 {
     display: inline-block;
 
+    margin: 25px 0 0 0;
+
     vertical-align: top;
 }
 
@@ -27,4 +29,16 @@
     padding: 5px 10px;
 
     background-color: gold;
+}
+
+.product-card_type_edit .product-card__edit
+{
+    display: none;
+}
+
+.product-card_type_edit .image
+{
+    margin: 15px 0;
+
+    border: 1px solid #ccc;
 }
