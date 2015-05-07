@@ -51,12 +51,11 @@ module.exports = {
                 .resize(width, height)
                 .write(filePathWithSize, function(err) {
                     if (err) next(err);
-                    var readStream = fs.createReadStream(filePathWithSize);
-                    readStream.pipe(res);
+
+                    res.sendfile(filePathWithSize);
                 });
         } else {
-            var readStream = fs.createReadStream(filePathWithSize);
-            readStream.pipe(res);
+            res.sendfile(filePathWithSize);
         }
     },
 
@@ -70,7 +69,7 @@ module.exports = {
         var filePath = path.resolve(__dirname, sails.config.fileUpload.staticDir, directory, file);
 
         if (fs.existsSync(filePath)) {
-            fs.createReadStream(filePath).pipe(res);
+            res.sendfile(filePath);
 
         } else {
             console.log("File ", filePath,  " is not exist.");
