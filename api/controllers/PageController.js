@@ -5,6 +5,8 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
+var url = require('url');
+
 module.exports = {
 
     index: function(req, res) {
@@ -45,12 +47,18 @@ module.exports = {
     },
 
     'new': function(req, res) {
+        var pathname;
+
+        if (req.headers.referer) {
+            pathname = url.parse(req.headers.referer).pathname;
+        }
+
         res.render({
             data: {
                 page: {
                     title: 'string',
-                    content: 'string',
-                    url: 'sting'
+                    content: 'Содержание страницы',
+                    url: pathname
                 }
             }
         });
