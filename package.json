@@ -53,10 +53,11 @@
     "debug": "node debug app.js",
     "deps": "npm i && bower i",
     "make-views": "npm run views-compile && npm run copy-views",
-    "views-compile": "node_modules/.bin/enb make -d views --no-cache",
+    "views-compile": "node_modules/.bin/enb make -d frontend --no-cache",
     "copy-views": "npm run copy-css && npm run copy-js",
-    "copy-css": "cp views/desktop.bundles/merged/_merged.css views/static/css/",
-    "copy-js": "cp views/desktop.bundles/merged/_merged.js views/static/js/"
+    "copy-css": "cp frontend/desktop.bundles/merged/_merged.css frontend/static/css/",
+    "copy-js": "cp frontend/desktop.bundles/merged/_merged.js frontend/static/js/",
+    "tests": "make test"
   },
   "main": "app.js",
   "repository": {
