@@ -9,27 +9,35 @@ var url = require('url');
 
 module.exports = {
 
-    index: function(req, res) {
+    index: function(req, res, next) {
         Page.find(function(err, pages) {
+            if (err) next(err);
+
             res.render({data: {pages: pages}});
         });
     },
 
-    show: function(req, res) {
+    show: function(req, res, next) {
         Page.findOne(req.param('id'), function(err, page) {
+            if (err) next(err);
+
             res.render({data: {page: page}});
         });
     },
 
-    showByUrl: function(req, res) {
+    showByUrl: function(req, res, next) {
         Page.findOne({url: req.path}, function(err, page) {
+            if (err) next(err);
+
             res.render({data: {page: page}});
         });
     },
 
-    create: function(req, res) {
+    create: function(req, res, next) {
 
         Page.create(req.params.all(), function(err, page) {
+            if (err) next(err);
+
             res.status(201);
 
             if (page) {
@@ -40,8 +48,10 @@ module.exports = {
         });
     },
 
-    edit: function(req, res) {
+    edit: function(req, res, next) {
         Page.findOne(req.param('id'), function(err, page) {
+            if (err) next(err);
+
             res.render({data: {page: page}});
         });
     },
@@ -64,14 +74,18 @@ module.exports = {
         });
     },
 
-    update: function(req, res) {
+    update: function(req, res, next) {
         Page.update(req.param('id'), req.params.all(), function(err, page) {
+            if (err) next(err);
+
             res.redirect('/pages/' + req.param('id'));
         });
     },
 
-    'delete': function(req, res) {
+    'delete': function(req, res, next) {
         Page.delete(req.param('url'), function(err) {
+            if (err) next(err);
+
             res.redirect('/pages/');
         });
     }

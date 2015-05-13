@@ -10,8 +10,10 @@ module.exports = {
     /**
      * `IndexPageController.index()`
      */
-    index: function(req, res) {
+    index: function(req, res, next) {
         Product.find(function(err, products) {
+            if (err) next(err);
+
             res.render({
                 data: {
                     products: products,

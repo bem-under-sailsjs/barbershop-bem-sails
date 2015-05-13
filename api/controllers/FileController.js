@@ -72,7 +72,6 @@ module.exports = {
             res.sendfile(filePath);
 
         } else {
-            console.log("File ", filePath,  " is not exist.");
             next();
         }
 

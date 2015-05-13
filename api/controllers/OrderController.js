@@ -10,13 +10,14 @@ module.exports = {
     /**
      * `OrderController.create()`
      */
-    create: function(req, res) {
+    create: function(req, res, next) {
         Order.create(req.params.all(), function(err, order) {
-            if (err) console.log(err);
+            if (err) next(err);
 
             // Mail to manager and customer
             emailService.sendEmail({order: order}, function(err) {
                 // TODO: set flash with err
+                if (err) next(err);
 
                 // TODO: clear Cart and set 'proceed' status to order
 
@@ -28,9 +29,9 @@ module.exports = {
     /**
      * `OrderController.show()`
      */
-    show: function(req, res) {
+    show: function(req, res, next) {
         Order.findOne(req.param('id'), function(err, order) {
-            if (err) console.log(err);
+            if (err) next(err);
 
             res.render({data: {order: order}});
         });

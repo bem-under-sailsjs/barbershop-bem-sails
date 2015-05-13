@@ -10,8 +10,10 @@ module.exports = {
     /**
      * `ProductController.index()`
      */
-    index: function(req, res) {
+    index: function(req, res, next) {
         Product.find(function(err, products) {
+            if (err) next(err);
+
             res.render({data: {products: products}});
         });
     },
@@ -19,16 +21,18 @@ module.exports = {
     /**
      * `ProductController.show()`
      */
-    show: function(req, res) {
+    show: function(req, res, next) {
         Product.findOne({id: req.param('id')}, function(err, product) {
+            if (err) next(err);
+
             res.render({data: {product: product}});
         });
     },
 
-    addToCart: function(req, res) {
+    addToCart: function(req, res, next) {
 
         Product.findOne(req.param('id'), function(err, product) {
-            if (err) console.log(err);
+            if (err) next(err);
 
             Cart.add(
                 {
@@ -77,8 +81,10 @@ module.exports = {
     /**
      * `ProductController.edit()`
      */
-    edit: function(req, res) {
+    edit: function(req, res, next) {
         Product.findOne({id: req.param('id')}, function(err, product) {
+            if (err) next(err);
+
             res.render({data: {product: product}});
         });
     },
@@ -123,8 +129,6 @@ module.exports = {
                 var productData = req.params.all();
                 productData.image = getImageName(file);
 
-                console.log("productData.image: ", productData.image);
-
                 Product.update(req.param('id'), productData, function(err, product) {
                     if (err) res.redirect('/product/' + req.param('id') + '/edit');
 
@@ -142,8 +146,11 @@ module.exports = {
         var productId = req.param('id');
 
         Product.findOne({id: productId}, function(err, product) {
+            if (err) next(err);
 
             Product.delete({id: productId}, function(err) {
+                if (err) next(err);
+
                 next();
             });
 
