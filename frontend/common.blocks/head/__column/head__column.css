@@ -4,3 +4,8 @@
 
     vertical-align: top;
 }
+
+.head__column:nth-last-of-type(2)
+{
+    width: 80%;
+}

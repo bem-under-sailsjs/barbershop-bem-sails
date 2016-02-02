@@ -11,6 +11,10 @@ module.exports.connections = {
         adapter: 'sails-memory'
     },
 
+    localDiskDb: {
+        adapter: 'sails-disk'
+    },
+
     devMongodbServer: {
         adapter: 'sails-mongo',
         poolSize: 5,

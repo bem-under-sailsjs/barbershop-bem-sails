@@ -9,6 +9,8 @@ module.exports.policies = {
 
     ProductController: {
         '*': ['passport', 'isAdmin'],
+        'create': 'demo',
+        'edit': 'demo',
         'addToCart': 'passport',
         'show': 'passport',
         'index': 'passport'

@@ -18,11 +18,8 @@ block('head')(
                         elem: 'column',
                         content: [
                             {
-                                block: 'site-name'
-                            }/*,
-                            {
-                                block: 'search'
-                            }*/
+                                block: 'menu'
+                            }
                         ]
                     },
                     {
@@ -31,11 +28,11 @@ block('head')(
                             {
                                 block: 'user',
                                 data: this.ctx.data
-                            },
+                            }/*,
                             {
                                 block: 'cart-info',
                                 data: this.ctx.data
-                            }
+                            }*/
                         ]
                     }
                 ]

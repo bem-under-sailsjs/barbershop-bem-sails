@@ -1,7 +1,5 @@
 .menu__item
 {
-    font-family: Arial;
-
     display: inline-block;
 
     width: 19%;
@@ -9,5 +7,11 @@
     text-align: center;
     vertical-align: top;
 
-    color: #69c;
+    color: #ffffff;
+}
+
+.menu__item .link,
+.menu__item .link:visited
+{
+    color: #fff;
 }

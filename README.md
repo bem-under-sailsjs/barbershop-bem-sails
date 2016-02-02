@@ -2,6 +2,15 @@
 
 a [Sails](http://sailsjs.org) application
 
+
+### How to run
+```
+npm i
+npm run deps
+npm run make-views
+./node_modules/.bin/sails lift --verbose
+``
+
 ### How to deploy to ubuntu server
 
 ```bash

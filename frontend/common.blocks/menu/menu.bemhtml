@@ -5,27 +5,27 @@ block('menu')(
                 content: [
                     {
                         elem: 'item',
-                        content: 'Об издательстве',
+                        content: 'ИНФОРМАЦИЯ',
                         url: '/about/'
                     },
                     {
                         elem: 'item',
-                        content: 'Товары',
+                        content: 'НОВОСТИ',
+                        url: '/news/'
+                    },
+                    {
+                        elem: 'item',
+                        content: 'ПРАЙС-ЛИСТ',
                         url: '/products/'
                     },
                     {
                         elem: 'item',
-                        content: 'Как оформить заказ',
-                        url: '/how-to-order/'
+                        content: 'МАГАЗИН',
+                        url: '/products/'
                     },
                     {
                         elem: 'item',
-                        content: 'Доставка и оплата',
-                        url: '/delivery/'
-                    },
-                    {
-                        elem: 'item',
-                        content: 'Контакты',
+                        content: 'КОНТАКТЫ',
                         url: '/contacts/'
                     }
                 ]

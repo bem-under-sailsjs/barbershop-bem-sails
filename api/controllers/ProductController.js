@@ -11,11 +11,20 @@ module.exports = {
      * `ProductController.index()`
      */
     index: function(req, res, next) {
-        Product.find(function(err, products) {
+        /*Product.find(function(err, products) {
             if (err) next(err);
 
             res.render({data: {products: products}});
-        });
+        });*/
+
+        var productsDemo = [
+            {
+                image: '',
+                title: 'Набор для путешествий «Baxter of California»'
+            }
+        ];
+
+        res.render({ data: { products: productsDemo } });
     },
 
     /**

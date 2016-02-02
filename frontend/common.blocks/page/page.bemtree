@@ -12,10 +12,6 @@ match(this.ctx.data)
                 data: data
             },
             {
-                block: 'menu',
-                mods: {theme: 'islands', size: 'm'}
-            },
-            {
                 block: 'content',
                 content: [
                     {
@@ -37,7 +33,7 @@ match(this.ctx.data)
             },
             {
                 block: 'footer',
-                content: 'sails bem project stub 2015'
+                content: 'Barbershop 2015'
             },
             {elem: 'js', url: '/static/js/_merged.js'}
         ]
