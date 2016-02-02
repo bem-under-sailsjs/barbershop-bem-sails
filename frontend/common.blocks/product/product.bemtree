@@ -1,22 +1,11 @@
 block('product')(
-    content()(
-        function() {
-            var product = this.ctx.product;
-
-            return [
-                {
-                    elem: 'image',
-                    product: product
-                },
-                {
-                    elem: 'title',
-                    product: product
-                },
-                {
-                    elem: 'buy',
-                    data: this.ctx.data,
-                    product: product
-                }
-            ];
-        }
-    ));
+  content()(
+    function() {
+      var product = this.ctx.product;
+        return [
+          { elem: 'image', product: product },
+          { elem: 'title', product: product },
+          { elem: 'buy',   product: product, data: this.ctx.data }
+        ];
+    }
+));
