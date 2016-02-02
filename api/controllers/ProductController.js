@@ -19,31 +19,37 @@ module.exports = {
 
         var productsDemo = [
             {
+                "id": 1,
                 image: '1.jpg',
                 title: 'Набор для путешествий «Baxter of California»',
                 price: 2900
             },
             {
+                "id": 2,
                 image: '2.jpg',
                 title: 'Увлажняющий кондиционер «Baxter of California»',
                 price: 750
             },
             {
+                "id": 3,
                 image: '3.jpg',
                 title: ' Гель для волос «SUAVECITO»',
                 price: 290
             },
             {
+                "id": 4,
                 image: '4.jpg',
                 title: 'Глина для укладки волос «American crew»',
                 price: 500
             },
             {
+                "id": 5,
                 image: '5.jpg',
                 title: 'Гель для волос «AMERICAN CREW»',
                 price: 300
             },
             {
+                "id": 6,
                 image: '6.jpg',
                 title: 'Набор для бритья «Baxter of California»',
                 price: 3900

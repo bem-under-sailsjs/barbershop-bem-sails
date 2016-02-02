@@ -1,11 +1,11 @@
 block('product').elem('title')(
-    content()(function() {
-        var product = this.ctx.product;
+  content()(function() {
+    var product = this.ctx.product;
 
-        return {
-            block: 'link',
-            url: '/product/' + product.id,
-            content: product.title
-        };
-    })
+    return {
+      block: 'link',
+      url: '/product/' + product.id,
+      content: product.title
+    };
+  })
 );
