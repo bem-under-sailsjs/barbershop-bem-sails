@@ -35,9 +35,12 @@ sudo apt-get install nginx
 sudo apt-get install mongodb
 
 sudo mkdir /var/www && cd /var/www/
-sudo git clone https://github.com/alexbaumgertner/simple-store-sails.git silberbaumru
-sudo chown -R alexbaum:alexbaum silberbaumru
-cd silberbaumru
+sudo git clone https://github.com/bem-under-sailsjs/barbershop-bem-sails barbershop
+sudo chown -R %username%:%username% barbershop
+cd barbershop
 
 npm i
+npm run deps
+npm run make-views
+./node_modules/.bin/sails lift --verbose
 ```
