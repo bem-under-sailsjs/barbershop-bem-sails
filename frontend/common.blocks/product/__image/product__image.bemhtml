@@ -1,0 +1,17 @@
+block('product').elem('image')(
+    content()(function() {
+        var product = this.ctx.product;
+
+        return {
+            block: 'link',
+            url: '/product/' + product.id,
+            content: {
+                block: 'image',
+                width: '138px',
+                url: product.image || 'no_image.png', // TODO: Fixit
+                title: product.title,
+                alt: product.title
+            }
+        };
+    })
+);

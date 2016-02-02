@@ -12,15 +12,41 @@ module.exports = {
      */
     index: function(req, res, next) {
         /*Product.find(function(err, products) {
-            if (err) next(err);
+         if (err) next(err);
 
-            res.render({data: {products: products}});
-        });*/
+         res.render({data: {products: products}});
+         });*/
 
         var productsDemo = [
             {
-                image: '',
-                title: 'Набор для путешествий «Baxter of California»'
+                image: '1.jpg',
+                title: 'Набор для путешествий «Baxter of California»',
+                price: 2900
+            },
+            {
+                image: '2.jpg',
+                title: 'Увлажняющий кондиционер «Baxter of California»',
+                price: 750
+            },
+            {
+                image: '3.jpg',
+                title: ' Гель для волос «SUAVECITO»',
+                price: 290
+            },
+            {
+                image: '4.jpg',
+                title: 'Глина для укладки волос «American crew»',
+                price: 500
+            },
+            {
+                image: '5.jpg',
+                title: 'Гель для волос «AMERICAN CREW»',
+                price: 300
+            },
+            {
+                image: '6.jpg',
+                title: 'Набор для бритья «Baxter of California»',
+                price: 3900
             }
         ];
 
@@ -31,10 +57,10 @@ module.exports = {
      * `ProductController.show()`
      */
     show: function(req, res, next) {
-        Product.findOne({id: req.param('id')}, function(err, product) {
+        Product.findOne({ id: req.param('id') }, function(err, product) {
             if (err) next(err);
 
-            res.render({data: {product: product}});
+            res.render({ data: { product: product } });
         });
     },
 
@@ -66,24 +92,23 @@ module.exports = {
      */
     create: function(req, res, next) {
 
-        req.file('image')
-            .upload({
-                dirname: sails.config.fileUpload.uploadDir
-            }, function(err, file) {
+        req.file('image').upload({
+                                     dirname: sails.config.fileUpload.uploadDir
+                                 }, function(err, file) {
+            if (err) return next(err);
+
+            var productData = req.params.all();
+            productData.image = getImageName(file);
+
+            // TODO: rewrite
+            Product.create(productData, function(err, product) {
                 if (err) return next(err);
 
-                var productData = req.params.all();
-                productData.image = getImageName(file);
-
-                // TODO: rewrite
-                Product.create(productData, function(err, product) {
-                    if (err) return next(err);
-
-                    res.status(201);
-                    res.redirect('/product/' + product.id);
-                });
-
+                res.status(201);
+                res.redirect('/product/' + product.id);
             });
+
+        });
 
     },
 
@@ -91,10 +116,10 @@ module.exports = {
      * `ProductController.edit()`
      */
     edit: function(req, res, next) {
-        Product.findOne({id: req.param('id')}, function(err, product) {
+        Product.findOne({ id: req.param('id') }, function(err, product) {
             if (err) next(err);
 
-            res.render({data: {product: product}});
+            res.render({ data: { product: product } });
         });
     },
 
@@ -103,25 +128,25 @@ module.exports = {
      */
     'new': function(req, res) {
         res.render({
-            data: {
-                product: {
-                    publisher: 'string', // Наименование журнала (издания)
-                    publishing_year: 'integer', // Год издания
-                    number: 'integer', // номер
-                    subject: 'string', // Тематика
-                    theme: 'string', // Тема
-                    annotation: 'string',  // Аннотация
-                    content: 'string', // Содержание
-                    isbn: 'string', // ISBN
-                    price: 'integer', // Цена
-                    //tags: 'array', // Тэги
-                    image: 'string', // Обложка
-                    header: 'string', // заголовок
-                    balance: 'integer' // Баланс
+                       data: {
+                           product: {
+                               publisher: 'string', // Наименование журнала (издания)
+                               publishing_year: 'integer', // Год издания
+                               number: 'integer', // номер
+                               subject: 'string', // Тематика
+                               theme: 'string', // Тема
+                               annotation: 'string',  // Аннотация
+                               content: 'string', // Содержание
+                               isbn: 'string', // ISBN
+                               price: 'integer', // Цена
+                               //tags: 'array', // Тэги
+                               image: 'string', // Обложка
+                               header: 'string', // заголовок
+                               balance: 'integer' // Баланс
 
-                }
-            }
-        });
+                           }
+                       }
+                   });
     },
 
     /**
@@ -129,23 +154,22 @@ module.exports = {
      */
     update: function(req, res, next) {
 
-        req.file('image')
-            .upload({
-                dirname: sails.config.fileUpload.uploadDir
-            }, function(err, file) {
-                if (err) return next(err);
+        req.file('image').upload({
+                                     dirname: sails.config.fileUpload.uploadDir
+                                 }, function(err, file) {
+            if (err) return next(err);
 
-                var productData = req.params.all();
-                productData.image = getImageName(file);
+            var productData = req.params.all();
+            productData.image = getImageName(file);
 
-                Product.update(req.param('id'), productData, function(err, product) {
-                    if (err) res.redirect('/product/' + req.param('id') + '/edit');
+            Product.update(req.param('id'), productData, function(err, product) {
+                if (err) res.redirect('/product/' + req.param('id') + '/edit');
 
-                    res.status(201);
-                    res.redirect('/product/' + req.param('id'));
-                });
-
+                res.status(201);
+                res.redirect('/product/' + req.param('id'));
             });
+
+        });
     },
 
     /**
@@ -154,10 +178,10 @@ module.exports = {
     'delete': function(req, res, next) {
         var productId = req.param('id');
 
-        Product.findOne({id: productId}, function(err, product) {
+        Product.findOne({ id: productId }, function(err, product) {
             if (err) next(err);
 
-            Product.delete({id: productId}, function(err) {
+            Product.delete({ id: productId }, function(err) {
                 if (err) next(err);
 
                 next();

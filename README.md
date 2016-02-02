@@ -12,6 +12,10 @@ npm run make-views
 ./node_modules/.bin/sails lift --verbose
 ```
 
+go to [products](http://localhost:1337/products/)
+
+![product_html](design/products_html.png)
+
 ### How to deploy to ubuntu server
 
 ```bash

@@ -1,0 +1,26 @@
+block('product').elem('buy')(
+    content()(function() {
+        var product = this.ctx.product;
+
+        return {
+            block: 'form',
+            data: this.ctx.data,
+            method: 'post',
+            action: '/product/' + product.id + '/add-to-cart/',
+            content: [
+                {
+                    block: 'price',
+                    mix: [{ block: 'product', elem: 'price' }],
+                    value: product.price,
+                    currency: 'rub'
+                },
+                {
+                    block: 'button',
+                    mix: [{ block: 'product', elem: 'buy' }],
+                    mods: { type: 'submit', size: 'm' },
+                    text: 'Купить'
+                }
+            ]
+        };
+    })
+);
