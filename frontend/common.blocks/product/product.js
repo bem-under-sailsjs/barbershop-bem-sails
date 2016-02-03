@@ -6,17 +6,20 @@ modules.define(
       this.name,
       {
         onSetMod: {
-          'js': { 'inited': function() { console.log("this: ", this); } }
+          'js': {
+            'inited': function() {
+              var form = this.findBlockInside('form');
+
+              form.domElem.on('submit', this.addToCard);
+            }
+          }
         },
 
-        addToCard: function() {
+        addToCard: function(e) {
+          e.preventDefault();
           $.ajax({});
         }
-      },
-      {
-        live: function () {
-          this.liveBindTo('buy', 'click', this.prototype.addToCard);
-        }
-      }));
+      }
+    ));
 
   });

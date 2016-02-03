@@ -72,7 +72,11 @@ module.exports = {
 
     addToCart: function(req, res, next) {
 
-        Product.findOne(req.param('id'), function(err, product) {
+      console.log("req.param('id'): ", req.param('id'));
+
+      next();
+
+        /*Product.findOne(req.param('id'), function(err, product) {
             if (err) next(err);
 
             Cart.add(
@@ -90,7 +94,7 @@ module.exports = {
                     res.redirect('/cart/');
                 });
 
-        });
+        });*/
     },
 
     /**
